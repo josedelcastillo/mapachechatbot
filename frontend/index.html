@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tinkuy Marka — Guía Mapache</title>
+  <style>
+    :root {
+      --bg: #fdf6ee;
+      --surface: #fff9f3;
+      --border: #e8d9c5;
+      --accent: #b5623a;
+      --accent-light: #f5e6d8;
+      --text: #2d2017;
+      --text-muted: #8a6e56;
+      --radius: 18px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      max-width: 720px;
+      padding: 20px 24px 14px;
+      text-align: center;
+    }
+    header h1 { font-size: 1.25rem; font-weight: 700; color: var(--accent); }
+    header p  { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* ── No-config warning ── */
+    #no-config {
+      display: none;
+      width: calc(100% - 32px);
+      max-width: 688px;
+      margin-bottom: 8px;
+      padding: 10px 14px;
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      color: #664d03;
+    }
+
+    /* ── Chat window ── */
+    #chat {
+      flex: 1;
+      width: 100%;
+      max-width: 720px;
+      overflow-y: auto;
+      padding: 8px 16px 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scroll-behavior: smooth;
+    }
+
+    .msg { display: flex; gap: 10px; animation: fadeUp 0.2s ease; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .msg.user { flex-direction: row-reverse; }
+
+    .avatar {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0; align-self: flex-end;
+    }
+    .msg.user .avatar { background: var(--accent); }
+    .msg.bot  .avatar { background: var(--accent-light); }
+
+    .bubble {
+      max-width: 78%;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      box-shadow: var(--shadow);
+      white-space: pre-wrap;
+    }
+    .msg.user .bubble {
+      background: var(--accent);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .msg.bot .bubble {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-bottom-left-radius: 4px;
+    }
+
+    .typing-dots span {
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      margin: 0 2px;
+      animation: bounce 1.2s infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce {
+      0%,80%,100% { transform: translateY(0); }
+      40%          { transform: translateY(-6px); }
+    }
+
+    /* ── Input ── */
+    #input-area { width: 100%; max-width: 720px; padding: 12px 16px 20px; }
+    #input-area form {
+      display: flex; gap: 10px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      padding: 8px 8px 8px 18px;
+      box-shadow: var(--shadow);
+      transition: border-color 0.2s;
+    }
+    #input-area form:focus-within { border-color: var(--accent); }
+
+    textarea {
+      flex: 1; border: none; outline: none; background: transparent;
+      resize: none; font-size: 0.93rem; color: var(--text);
+      font-family: inherit; line-height: 1.5;
+      max-height: 120px; overflow-y: auto;
+    }
+    textarea::placeholder { color: var(--text-muted); }
+
+    button#send {
+      background: var(--accent); color: white;
+      border: none; border-radius: 18px;
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; align-self: flex-end;
+      transition: background 0.15s, transform 0.1s;
+    }
+    button#send:hover   { background: #963f22; }
+    button#send:active  { transform: scale(0.94); }
+    button#send:disabled { background: var(--border); cursor: not-allowed; }
+    button#send svg { width: 18px; height: 18px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🐾 Tinkuy Marka — Guía Mapache</h1>
+  <p>Tu acompañante en el Viaje del Héroe</p>
+</header>
+
+<div id="no-config">
+  ⚠️ API no configurado. Ejecuta <code>make deploy</code> y luego <code>make update-frontend-config</code>.
+</div>
+
+<div id="chat">
+  <div class="msg bot">
+    <div class="avatar">🦝</div>
+    <div class="bubble">¡Hola! Soy tu guía en el Viaje del Héroe de Tinkuy Marka.
+
+Estoy aquí para acompañarte como Mapache — ya sea que estés en tus primeros pasos como <strong>Guardian</strong>, encontrando tu camino como <strong>Mentor</strong>, o navegando cualquier etapa del camino.
+
+Cuéntame, ¿qué está pasando contigo o con tu Puma últimamente?
+En base a lo que me digas te sugeriré badges y/o libros para atravesar el camino.</div>
+  </div>
+</div>
+
+<div id="input-area">
+  <form onsubmit="sendMessage(event)">
+    <textarea
+      id="msg-input"
+      rows="1"
+      placeholder="Escribe tu mensaje…"
+      onkeydown="handleKey(event)"
+      oninput="autoResize(this)"
+    ></textarea>
+    <button id="send" type="submit">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+           stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"></line>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<script src="config.js"></script>
+<script>
+  let sessionId = 'session-' + Math.random().toString(36).slice(2, 10);
+  let isLoading = false;
+
+  // Show warning if API not configured
+  if (!API_URL) {
+    document.getElementById('no-config').style.display = 'block';
+  }
+
+  async function sendMessage(e) {
+    e.preventDefault();
+    const input = document.getElementById('msg-input');
+    const text = input.value.trim();
+    if (!text || isLoading) return;
+
+    if (!API_URL) {
+      appendMessage('bot', '⚠️ El API aún no está configurado. Ejecuta make deploy primero.');
+      return;
+    }
+
+    input.value = '';
+    autoResize(input);
+    appendMessage('user', text);
+    showTyping();
+    setLoading(true);
+
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId, message: text }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      removeTyping();
+      appendMessage('bot', data.response || '(Sin respuesta)');
+    } catch (err) {
+      removeTyping();
+      appendMessage('bot', `⚠️ Error al conectar.\n${err.message}`);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function appendMessage(role, text) {
+    const chat = document.getElementById('chat');
+    const div = document.createElement('div');
+    div.className = `msg ${role}`;
+    div.innerHTML = `
+      <div class="avatar">${role === 'user' ? '👤' : '🦝'}</div>
+      <div class="bubble">${escHtml(text)}</div>`;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function showTyping() {
+    const chat = document.getElementById('chat');
+    const div = document.createElement('div');
+    div.id = 'typing'; div.className = 'msg bot';
+    div.innerHTML = `<div class="avatar">🦝</div>
+      <div class="bubble typing-dots"><span></span><span></span><span></span></div>`;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function removeTyping() { document.getElementById('typing')?.remove(); }
+  function setLoading(v) {
+    isLoading = v;
+    document.getElementById('send').disabled = v;
+  }
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      document.querySelector('form').requestSubmit();
+    }
+  }
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+  }
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+  }
+</script>
+</body>
+</html>

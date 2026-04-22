@@ -1,0 +1,4 @@
+# boto3 is pre-installed in the AWS Lambda Python 3.11 runtime.
+# No additional dependencies required.
+# If you add new packages, list them here and update the CDK stack
+# to use Code.from_asset with bundling.
