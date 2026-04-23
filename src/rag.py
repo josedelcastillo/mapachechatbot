@@ -54,9 +54,9 @@ def detect_role_hint(user_message: str) -> str | None:
     heuristics: dict = kb.get("heuristics", {})
     lower_msg = user_message.lower()
 
-    for role_id, keywords in heuristics.items():
+    for nivel_id, keywords in heuristics.items():
         if any(kw.lower() in lower_msg for kw in keywords):
-            return role_id
+            return nivel_id
 
     return None
 
@@ -96,36 +96,35 @@ def _build_relevant_kb(kb: dict, role_hint: str | None, confirmed_role: str | No
     Return a compact KB string: all levels from the detected role first,
     then remaining roles. This keeps the prompt focused without hiding options.
     """
-    roles = kb.get("roles", [])
+    niveles = kb.get("niveles", [])
     active_id = confirmed_role or role_hint
 
     if active_id:
-        primary = [r for r in roles if r.get("id") == active_id]
-        secondary = [r for r in roles if r.get("id") != active_id]
+        primary = [n for n in niveles if n.get("id") == active_id]
+        secondary = [n for n in niveles if n.get("id") != active_id]
         ordered = primary + secondary
     else:
-        ordered = roles
+        ordered = niveles
 
-    # Emit only the fields needed for recommendations, tagging each item with role+level for citation
+    # Emit only the fields needed for recommendations, tagging each item with nivel+rol for citation
     compact = []
-    for role in ordered:
-        role_id = role.get("id", "")
-        role_name = role.get("name", role_id)
-        for lvl in role.get("levels", []):
-            level_name = lvl.get("name", "")
+    for nivel in ordered:
+        nivel_name = nivel.get("name", nivel.get("id", ""))
+        for rol in nivel.get("roles", []):
+            rol_name = rol.get("name", "")
             badges = [
-                {**b, "_role": role_name, "_level": level_name}
-                for b in lvl.get("badges", [])
+                {**b, "_nivel": nivel_name, "_rol": rol_name}
+                for b in rol.get("badges", [])
             ]
             books = [
-                {**b, "_role": role_name, "_level": level_name}
-                for b in lvl.get("books", [])
+                {**b, "_nivel": nivel_name, "_rol": rol_name}
+                for b in rol.get("books", [])
             ]
             if badges or books:
                 compact.append({
-                    "role": role_name,
-                    "level": level_name,
-                    "monster": lvl.get("monster"),
+                    "nivel": nivel_name,
+                    "rol": rol_name,
+                    "monster": rol.get("monster"),
                     "badges": badges,
                     "books": books,
                 })
@@ -180,7 +179,7 @@ RECENT MESSAGES:
 {recent_text or ""}
 
 KNOWLEDGE BASE (use ONLY these badges and books — copy names/titles verbatim):
-Each item includes "_role" and "_level" fields — include them in your response exactly as shown.
+Each item includes "_rol" (specific name, e.g. Hearthkeeper) and "_nivel" (category, e.g. Guardian) — include both in your response exactly as shown.
 {kb_text}
 
 ---
@@ -190,16 +189,16 @@ USER MESSAGE:
 
 ---
 
-Respond using EXACTLY this structure (in the user's language):
+Respond using EXACTLY this structure (in the user's language). Use emojis naturally to warm up the tone:
 
-[2–3 sentences: empathetic reflection on what the Mapache shared, naming the challenge or fear without labeling their role]
+[2–3 sentences: empathetic reflection on what the Mapache shared, naming the challenge or fear without labeling their role. Start with a fitting emoji.]
 
-Badges recomendados:
-- **<nombre exacto>** *(Rol: <_role> — Nivel: <_level>)*: <una oración explicando por qué aplica a su situación, basándote en la descripción del badge>
+🏅 Badges recomendados:
+- **<nombre exacto>** *(Rol: <_rol> — Nivel: <_nivel>)*: <una oración explicando por qué aplica a su situación, basándote en la descripción del badge>
 (include 2 to 4 badges most relevant to what the Mapache described)
 
-Libros recomendados:
-- **<título> — <autor>** *(Rol: <_role> — Nivel: <_level>)*: <una oración explicando por qué aplica a su situación, basándote en la descripción del libro>
+📚 Libros recomendados:
+- **<título> — <autor>** *(Rol: <_rol> — Nivel: <_nivel>)*: <una oración explicando por qué aplica a su situación, basándote en la descripción del libro>
 (include 1 to 3 books most relevant to what the Mapache described)
 """
 

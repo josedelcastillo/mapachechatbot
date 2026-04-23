@@ -7,17 +7,118 @@
     "badge": "Practical challenge or learning activity for Mapaches",
     "badge_book": "Recommended book for Mapaches to read"
   },
-  "roles": [
+  "heuristics": {
+    "guardian": [
+      "duda",
+      "doubt",
+      "miedo",
+      "fear",
+      "seguro",
+      "sure",
+      "juzgan",
+      "judging",
+      "críticas",
+      "criticism",
+      "controlar",
+      "control",
+      "micromanage",
+      "decisión incorrecta",
+      "wrong decision",
+      "confío",
+      "trust",
+      "nueva escuela",
+      "new school"
+    ],
+    "mentor": [
+      "no le importa",
+      "doesn't care",
+      "indiferente",
+      "indifferent",
+      "resistencia",
+      "resistance",
+      "se niega",
+      "refuses",
+      "no sé qué sigue",
+      "don't know what's next",
+      "qué viene",
+      "what comes next",
+      "límites",
+      "boundaries",
+      "disciplina",
+      "discipline"
+    ],
+    "challenger": [
+      "sobreproteger",
+      "overprotect",
+      "rescatar",
+      "rescue",
+      "demasiado duro",
+      "too harsh",
+      "se rinde",
+      "give up",
+      "incumple",
+      "doesn't follow through",
+      "independencia",
+      "independence",
+      "responsabilidad",
+      "responsibility",
+      "lucha",
+      "struggle"
+    ],
+    "ally": [
+      "irrelevante",
+      "irrelevant",
+      "me necesita menos",
+      "needs me less",
+      "desapruebo",
+      "disapprove",
+      "no me gusta su decisión",
+      "don't like their choice",
+      "me arrepiento",
+      "regret",
+      "culpa",
+      "guilt",
+      "ansiedad",
+      "anxiety",
+      "pantallas",
+      "screens"
+    ],
+    "legacy": [
+      "se va",
+      "leaving",
+      "se aleja",
+      "drifting away",
+      "ya no me necesita",
+      "doesn't need me",
+      "cambio",
+      "change",
+      "distancia",
+      "distance",
+      "propósito",
+      "purpose",
+      "graduación",
+      "graduation"
+    ]
+  },
+  "niveles": [
     {
       "id": "guardian",
       "name": "Guardian",
       "subtitle": "Protector & Provider",
       "stage": "The Beginning",
-      "traits": ["Protective", "nurturing", "reliable"],
+      "traits": [
+        "Protective",
+        "nurturing",
+        "reliable"
+      ],
       "task": "Creating a secure foundation for their Puma's growth",
       "challenge": "Trusting an unconventional approach",
-      "monsters": ["Doubt", "Judgment", "Control"],
-      "levels": [
+      "monsters": [
+        "Doubt",
+        "Judgment",
+        "Control"
+      ],
+      "roles": [
         {
           "name": "Hearthkeeper",
           "description": "Builds a nurturing home. Faces Doubt, remembering the choice is made with love and courage.",
@@ -121,11 +222,19 @@
       "name": "Mentor",
       "subtitle": "Guide & Role Model",
       "stage": "Igniting the Spark",
-      "traits": ["Patient", "wise", "disciplined"],
+      "traits": [
+        "Patient",
+        "wise",
+        "disciplined"
+      ],
       "task": "Supporting and modeling lifelong learning",
       "challenge": "Balancing guidance with independence",
-      "monsters": ["Indifference", "Resistance", "Uncertainty"],
-      "levels": [
+      "monsters": [
+        "Indifference",
+        "Resistance",
+        "Uncertainty"
+      ],
+      "roles": [
         {
           "name": "Torchbearer",
           "description": "Ignites curiosity and love for learning. Faces Indifference by modeling curiosity with purpose.",
@@ -233,11 +342,19 @@
       "name": "Challenger",
       "subtitle": "Catalyst for Growth",
       "stage": "Facing the Tests",
-      "traits": ["Encouraging", "firm", "strategic"],
+      "traits": [
+        "Encouraging",
+        "firm",
+        "strategic"
+      ],
       "task": "Encouraging independence and problem-solving",
       "challenge": "Overcoming the instinct to rescue",
-      "monsters": ["Self-Doubt", "Overprotection", "Defeat"],
-      "levels": [
+      "monsters": [
+        "Self-Doubt",
+        "Overprotection",
+        "Defeat"
+      ],
+      "roles": [
         {
           "name": "Gatekeeper",
           "description": "Tests readiness for greater responsibility. Faces Self-Doubt, learning to trust their instinct.",
@@ -350,11 +467,19 @@
       "name": "Ally",
       "subtitle": "Supportive but Unintrusive",
       "stage": "Trusting the Hero",
-      "traits": ["Respectful", "empowering", "steadfast"],
+      "traits": [
+        "Respectful",
+        "empowering",
+        "steadfast"
+      ],
       "task": "Providing trust, perspective, and encouragement",
       "challenge": "Accepting that their Puma's path may look different from their own expectations",
-      "monsters": ["Wraith", "Disapproval", "Regret"],
-      "levels": [
+      "monsters": [
+        "Wraith",
+        "Disapproval",
+        "Regret"
+      ],
+      "roles": [
         {
           "name": "Silent Watcher",
           "description": "Observes without interference. Faces Wraith (fear of becoming irrelevant), trusting the bond of love.",
@@ -454,11 +579,19 @@
       "name": "Legacy",
       "subtitle": "Inspiration & Imprint",
       "stage": "A New Beginning",
-      "traits": ["Inspirational", "content", "timeless"],
+      "traits": [
+        "Inspirational",
+        "content",
+        "timeless"
+      ],
       "task": "Celebrating the journey and embracing a new phase",
       "challenge": "Letting go with pride and confidence",
-      "monsters": ["Drift", "Distance", "Change"],
-      "levels": [
+      "monsters": [
+        "Drift",
+        "Distance",
+        "Change"
+      ],
+      "roles": [
         {
           "name": "Echo of Purpose",
           "description": "Their values live on through their Puma's actions. Faces Drift, recognizing their guidance shaped a purposeful individual.",
@@ -515,12 +648,5 @@
         }
       ]
     }
-  ],
-  "heuristics": {
-    "guardian": ["duda", "doubt", "miedo", "fear", "seguro", "sure", "juzgan", "judging", "críticas", "criticism", "controlar", "control", "micromanage", "decisión incorrecta", "wrong decision", "confío", "trust", "nueva escuela", "new school"],
-    "mentor": ["no le importa", "doesn't care", "indiferente", "indifferent", "resistencia", "resistance", "se niega", "refuses", "no sé qué sigue", "don't know what's next", "qué viene", "what comes next", "límites", "boundaries", "disciplina", "discipline"],
-    "challenger": ["sobreproteger", "overprotect", "rescatar", "rescue", "demasiado duro", "too harsh", "se rinde", "give up", "incumple", "doesn't follow through", "independencia", "independence", "responsabilidad", "responsibility", "lucha", "struggle"],
-    "ally": ["irrelevante", "irrelevant", "me necesita menos", "needs me less", "desapruebo", "disapprove", "no me gusta su decisión", "don't like their choice", "me arrepiento", "regret", "culpa", "guilt", "ansiedad", "anxiety", "pantallas", "screens"],
-    "legacy": ["se va", "leaving", "se aleja", "drifting away", "ya no me necesita", "doesn't need me", "cambio", "change", "distancia", "distance", "propósito", "purpose", "graduación", "graduation"]
-  }
+  ]
 }
