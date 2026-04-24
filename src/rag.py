@@ -1,6 +1,7 @@
 """
-Prompt construction and knowledge base loading from S3.
-KB is cached in Lambda memory after first load.
+Prompt construction and knowledge base loading.
+KB is loaded from the Lambda package (local file), badge progress from S3.
+Both are cached in module globals — populated once per container lifetime.
 """
 
 import json
@@ -13,12 +14,13 @@ from memory import get_recent_messages
 
 logger = logging.getLogger()
 
-S3_BUCKET = os.environ["S3_BUCKET_NAME"]
-KB_KEY = os.environ["KB_S3_KEY"]
+S3_BUCKET = os.environ.get("S3_BUCKET_NAME", "")
 BADGE_PROGRESS_KEY = os.environ.get("BADGE_PROGRESS_S3_KEY", "badge_progress/all_mapaches.json")
 
+# Module-level caches — survive across warm invocations
 _kb_cache: dict | None = None
 _badge_progress_cache: dict | None = None
+_badge_index_cache: dict | None = None
 _s3_client = None
 
 
@@ -31,17 +33,20 @@ def _s3():
 
 
 def load_knowledge_base() -> dict:
-    """Load KB JSON from S3, caching in Lambda memory."""
+    """Load KB JSON from local package file, caching in Lambda memory.
+    Avoids an S3 call on cold start — KB is bundled with the Lambda code.
+    """
     global _kb_cache
     if _kb_cache is not None:
         return _kb_cache
 
+    kb_path = os.path.join(os.path.dirname(__file__), "knowledge_base", "journey.json")
     try:
-        obj = _s3().get_object(Bucket=S3_BUCKET, Key=KB_KEY)
-        _kb_cache = json.loads(obj["Body"].read().decode("utf-8"))
-        logger.info("Knowledge base loaded from S3")
+        with open(kb_path, "r", encoding="utf-8") as f:
+            _kb_cache = json.load(f)
+        logger.info("Knowledge base loaded from local file")
     except Exception:
-        logger.exception("Failed to load knowledge base from S3")
+        logger.exception("Failed to load knowledge base from local file")
         _kb_cache = {}
 
     return _kb_cache
@@ -79,6 +84,14 @@ def _build_badge_index(progress: dict) -> dict[str, list[str]]:
             if len(index[badge]) < 3:
                 index[badge].append(name)
     return index
+
+
+def _get_badge_index() -> dict[str, list[str]]:
+    """Return cached badge index, building it once per container lifetime."""
+    global _badge_index_cache
+    if _badge_index_cache is None:
+        _badge_index_cache = _build_badge_index(load_badge_progress())
+    return _badge_index_cache
 
 
 def detect_role_hint(user_message: str) -> str | None:
@@ -140,9 +153,10 @@ def _build_relevant_kb(
     active_id = confirmed_role or role_hint
 
     if active_id:
-        primary = [n for n in niveles if n.get("id") == active_id]
-        secondary = [n for n in niveles if n.get("id") != active_id]
-        ordered = primary + secondary
+        # When role is known, send only that role — reduces prompt tokens ~60%
+        ordered = [n for n in niveles if n.get("id") == active_id]
+        if not ordered:
+            ordered = niveles  # fallback if id not found
     else:
         ordered = niveles
 
@@ -193,8 +207,7 @@ def _build_relevant_kb(
 
 def build_prompt(session: dict, user_message: str, role_hint: str | None) -> str:
     kb = load_knowledge_base()
-    progress = load_badge_progress()
-    badge_index = _build_badge_index(progress)
+    badge_index = _get_badge_index()
 
     recent = get_recent_messages(session)
     recent_text = _format_messages(recent)
