@@ -1,0 +1,4 @@
+# Installed Lambda deps — needed for CDK from_asset packaging, not for git
+*.dist-info/
+*.egg-info/
+__pycache__/
