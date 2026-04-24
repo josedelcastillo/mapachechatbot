@@ -1,0 +1,652 @@
+{
+  "title": "Family Badges: Descriptions by Role and Level",
+  "source": "Tinkuy Marka Academy — Mapache Badge Descriptions",
+  "terminology": {
+    "mapache": "Parent or caregiver at Tinkuy Marka Academy",
+    "puma": "Child or student at Tinkuy Marka Academy",
+    "badge": "Practical challenge or learning activity for Mapaches",
+    "badge_book": "Recommended book for Mapaches to read"
+  },
+  "heuristics": {
+    "guardian": [
+      "duda",
+      "doubt",
+      "miedo",
+      "fear",
+      "seguro",
+      "sure",
+      "juzgan",
+      "judging",
+      "críticas",
+      "criticism",
+      "controlar",
+      "control",
+      "micromanage",
+      "decisión incorrecta",
+      "wrong decision",
+      "confío",
+      "trust",
+      "nueva escuela",
+      "new school"
+    ],
+    "mentor": [
+      "no le importa",
+      "doesn't care",
+      "indiferente",
+      "indifferent",
+      "resistencia",
+      "resistance",
+      "se niega",
+      "refuses",
+      "no sé qué sigue",
+      "don't know what's next",
+      "qué viene",
+      "what comes next",
+      "límites",
+      "boundaries",
+      "disciplina",
+      "discipline"
+    ],
+    "challenger": [
+      "sobreproteger",
+      "overprotect",
+      "rescatar",
+      "rescue",
+      "demasiado duro",
+      "too harsh",
+      "se rinde",
+      "give up",
+      "incumple",
+      "doesn't follow through",
+      "independencia",
+      "independence",
+      "responsabilidad",
+      "responsibility",
+      "lucha",
+      "struggle"
+    ],
+    "ally": [
+      "irrelevante",
+      "irrelevant",
+      "me necesita menos",
+      "needs me less",
+      "desapruebo",
+      "disapprove",
+      "no me gusta su decisión",
+      "don't like their choice",
+      "me arrepiento",
+      "regret",
+      "culpa",
+      "guilt",
+      "ansiedad",
+      "anxiety",
+      "pantallas",
+      "screens"
+    ],
+    "legacy": [
+      "se va",
+      "leaving",
+      "se aleja",
+      "drifting away",
+      "ya no me necesita",
+      "doesn't need me",
+      "cambio",
+      "change",
+      "distancia",
+      "distance",
+      "propósito",
+      "purpose",
+      "graduación",
+      "graduation"
+    ]
+  },
+  "niveles": [
+    {
+      "id": "guardian",
+      "name": "Guardian",
+      "subtitle": "Protector & Provider",
+      "stage": "The Beginning",
+      "traits": [
+        "Protective",
+        "nurturing",
+        "reliable"
+      ],
+      "task": "Creating a secure foundation for their Puma's growth",
+      "challenge": "Trusting an unconventional approach",
+      "monsters": [
+        "Doubt",
+        "Judgment",
+        "Control"
+      ],
+      "roles": [
+        {
+          "name": "Hearthkeeper",
+          "description": "Builds a nurturing home. Faces Doubt, remembering the choice is made with love and courage.",
+          "monster": "Doubt",
+          "badges": [
+            {
+              "name": "Boundaries: Una cultura de respeto y cuidado",
+              "description": "En Tinkuy Marka fomentamos una cultura de apertura y tolerancia a la diversidad, valoración del error y respeto de las diferencias, ritmos y decisiones de cada quien. Conoce cómo lo hacemos y qué se espera de ti completando este badge."
+            },
+            {
+              "name": "Nurture: Criar con respeto",
+              "description": "Para que la cultura de respeto de Tinkuy ayude a tu Puma, es importante que Tinkuy y tu familia estén en sintonía. Completa este badge para fortalecer tus estilos de crianza, mejorar la comunicación con tus Pumas y erradicar toda forma de maltrato, visible e invisible."
+            }
+          ],
+          "books": [
+            {
+              "title": "The Gardener and the Carpenter",
+              "author": "Alison Gopnik",
+              "description": "Ilumina las paradojas de la paternidad desde una perspectiva científica. Gopnik sostiene que la imagen del siglo XXI de padres e hijos es profundamente errónea: el cuidado de les niñes no se trata de moldearlos para que salgan de una determinada manera."
+            },
+            {
+              "title": "Entre Padres e Hijos",
+              "author": "Dr. Haim Ginott",
+              "description": "Guía clásica con consejos para educar a los hijos de forma cariñosa y disciplinada. Enseña cómo disciplinar sin amenazas, criticar sin degradar, y reconocer las emociones e ideas de tu hijo."
+            },
+            {
+              "title": "The 5 Love Languages of Children",
+              "author": "Dr. Gary Chapman",
+              "description": "Cada niñe expresa y recibe amor a través de uno de cinco estilos de comunicación. Descubre cuál es el lenguaje de amor principal de tu Puma y aprende cómo transmitirle amor incondicional de una forma que resuene en sus emociones."
+            }
+          ]
+        },
+        {
+          "name": "Pathkeeper",
+          "description": "Trusts the journey of deep education. Battles Judgment, valuing their family's experience over external expectations.",
+          "monster": "Judgment",
+          "badges": [
+            {
+              "name": "Trust: Relación con les guías",
+              "description": "Invitación a reflexionar sobre cómo construimos vínculos sanos dentro de nuestra comunidad: entre familias, guías y Pumas. Refuerza un principio clave: no toleramos el maltrato bajo ninguna forma."
+            },
+            {
+              "name": "Technology: Apps de mi Puma",
+              "description": "Acompañar el aprendizaje de tu Puma en el mundo digital también es parte de tu rol. Este badge te ayuda a explorar nuevas plataformas, mantener una presencia atenta y respetuosa, y proteger a tu Puma en el ciberespacio."
+            }
+          ],
+          "books": [
+            {
+              "title": "Unschooling Rules",
+              "author": "Clark Aldrich",
+              "description": "Manifiesto revolucionario con 55 reglas clave que replantean la visión sobre la educación. Ideas como: aprende a ser, aprende a hacer, aprende a conocer. Las prácticas e intereses reales son mejores que los exámenes y textos."
+            },
+            {
+              "title": "Courage to Grow",
+              "author": "Laura Sandefer",
+              "description": "Narra cómo una pequeña escuela en Texas inspiró a familias a creer que cada niñe merece descubrir una vocación. Tinkuy es parte de esta red Acton. Una historia real de familias valientes que encontraron una forma más poderosa de aprender."
+            }
+          ]
+        },
+        {
+          "name": "Mindkeeper",
+          "description": "Embraces and protects learner-driven principles. Relinquishes Control, resisting the urge to micromanage.",
+          "monster": "Control",
+          "badges": [
+            {
+              "name": "Reading at Tinkuy",
+              "description": "Comprende cómo en Tinkuy fomentamos el amor por la lectura: desde cómics hasta libros profundos que transforman la vida. Actividades como DEAR (Drop Everything And Read) llevan naturalmente a libros más complejos."
+            },
+            {
+              "name": "Writing with traits",
+              "description": "Aprende cómo los Pumas aprenden a escribir en Tinkuy: escribiendo sobre temas que los inspiran, criticando y reescribiendo con amigues, y revisando su trabajo para exhibiciones públicas."
+            }
+          ],
+          "books": [
+            {
+              "title": "The Talent Code",
+              "author": "Daniel Coyle",
+              "description": "Revela el secreto del talento: práctica profunda, ignición de la pasión, y master coaching. La mielina cerebral se desarrolla con el tiempo y la práctica correcta, no es algo con lo que nacemos."
+            },
+            {
+              "title": "The One World Schoolhouse",
+              "author": "Salman Khan",
+              "description": "Visión radical para el futuro de la educación. Khan argumenta que la tecnología puede transformar las aulas y que el aprendizaje basado en dominio puede nivelar el campo de juego para todos los niños."
+            },
+            {
+              "title": "NurtureShock",
+              "author": "Po Bronson & Ashley Merryman",
+              "description": "Desafía las creencias más extendidas sobre la crianza con investigaciones científicas. Revela sorpresas sobre el elogio, el sueño, la agresividad infantil y cómo el entorno familiar impacta el comportamiento."
+            },
+            {
+              "title": "6 + 1 Traits of Writing",
+              "author": "Ruth Culham",
+              "description": "El modelo 6+1 TRAIT ha revolucionado la enseñanza de la escritura al identificar fortalezas y debilidades en ideas, organización, voz, elección de palabras, fluidez, convenciones y presentación."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mentor",
+      "name": "Mentor",
+      "subtitle": "Guide & Role Model",
+      "stage": "Igniting the Spark",
+      "traits": [
+        "Patient",
+        "wise",
+        "disciplined"
+      ],
+      "task": "Supporting and modeling lifelong learning",
+      "challenge": "Balancing guidance with independence",
+      "monsters": [
+        "Indifference",
+        "Resistance",
+        "Uncertainty"
+      ],
+      "roles": [
+        {
+          "name": "Torchbearer",
+          "description": "Ignites curiosity and love for learning. Faces Indifference by modeling curiosity with purpose.",
+          "monster": "Indifference",
+          "badges": [
+            {
+              "name": "Montessori: Seeing with New Eyes",
+              "description": "Explora las ideas pedagógicas de María Montessori y cómo se aplican en Tinkuy. Al completar este badge podrás entender cómo los principios Montessori respetan el ritmo natural de aprendizaje y crear un entorno enriquecedor."
+            },
+            {
+              "name": "Joseph Campbell: Hero's Journey",
+              "description": "El viaje del héroe es la idea de decidir intencionalmente cómo vivir una vida significativa. Explorarás qué significa ser un héroe, por qué necesitas hacer un viaje, y cómo los héroes impactan el mundo a su alrededor."
+            },
+            {
+              "name": "Learning Through Questions",
+              "description": "Si queremos que nuestros hijos sean curiosos y seguros intelectualmente, debemos centrarnos en hacer las preguntas correctas. Aprende las tres reglas para encender el aprendizaje."
+            }
+          ],
+          "books": [
+            {
+              "title": "Choice Words: How Our Language Affects Children's Learning",
+              "author": "Peter Johnston",
+              "description": "Muestra cómo en las aulas productivas los profesores construyen comunidades de aprendizaje emocionalmente saludables. Lo que decimos (y lo que no decimos) tiene consecuencias sorprendentes sobre lo que los niños aprenden."
+            },
+            {
+              "title": "Education for Judgment",
+              "author": "C. Roland Christensen",
+              "description": "Basado en la metodología del caso de Harvard, muestra cómo el diálogo bien conducido puede ser una de las herramientas más poderosas para el aprendizaje profundo. Una guía para liderar discusiones significativas."
+            },
+            {
+              "title": "The Hero with a Thousand Faces",
+              "author": "Joseph Campbell",
+              "description": "Campbell conecta la psicología moderna con la mitología comparada para revelar el Viaje del Héroe: ese patrón universal de aventura, prueba y renacimiento que late en los mitos de todo el planeta."
+            }
+          ]
+        },
+        {
+          "name": "Keystone",
+          "description": "Holds firm boundaries while fostering agency. Battles Resistance, encouraging their Puma to take the first step.",
+          "monster": "Resistance",
+          "badges": [
+            {
+              "name": "Accountability: Sistema de contratos y rendición de cuentas",
+              "description": "Conoce cómo se organiza la sociedad de cada studio: las reglas y límites, los contratos que rigen la vida del studio, las consecuencias naturales cuando se cruzan los límites, y los recursos para abordar conflictos."
+            },
+            {
+              "name": "Agency: Límites, opciones y consecuencias",
+              "description": "Aprende cuándo poner límites claros y firmes, y cuándo ceder. Las consecuencias naturales y acordadas son más efectivas que el castigo para desarrollar la autonomía del Puma."
+            }
+          ],
+          "books": [
+            {
+              "title": "Helicopters, Drill Sergeants & Consultants",
+              "author": "Jim Fay",
+              "description": "Ofrece herramientas para dejar de usar el poder como único recurso. Permite que niñas y niños aprendan a asumir responsabilidades y tomar decisiones sin caer en el sobrecuidado que asfixia la autonomía."
+            },
+            {
+              "title": "Positive Discipline A-Z",
+              "author": "Jane Nelsen",
+              "description": "Guía práctica para acompañar a tu Puma con firmeza y respeto en los momentos más difíciles. Organizado por temas concretos: rivalidad entre hermanos, problemas de sueño, límites en la era digital. Sin castigos ni premios."
+            },
+            {
+              "title": "Positive Discipline for Preschoolers",
+              "author": "Jane Nelsen",
+              "description": "Guía esencial para criar a un hije responsable e ingenioso desde sus primeros años. Responde preguntas cruciales sobre comportamientos desafiantes y ofrece herramientas para fomentar habilidades sociales."
+            },
+            {
+              "title": "Positive Discipline",
+              "author": "Jane Nelsen",
+              "description": "El secreto no está en el castigo, sino en el respeto mutuo. Enseña a ser firme y amable para que cualquier niñe aprenda cooperación creativa y autodisciplina sin perder su dignidad."
+            }
+          ]
+        },
+        {
+          "name": "Northstar",
+          "description": "Guides with clarity and purpose. Overcomes Uncertainty, learning to trust the journey ahead.",
+          "monster": "Uncertainty",
+          "badges": [
+            {
+              "name": "Transparency: Productividad personal y monitoreo",
+              "description": "Aprende sobre los Puntos Semanales, las Badges del Tinkuy Journey y las Retroalimentaciones 360 que miden el progreso de tu Puma. La transparencia radical ayuda a alentar con mentalidad de crecimiento."
+            },
+            {
+              "name": "Mitra: Cutting Edge Education",
+              "description": "Nuestra comunidad learner-driven está a la vanguardia de la revolución educativa. Cuanto más entiendas cómo otros están alterando la educación tradicional, más rápido podremos adoptar sus innovaciones."
+            }
+          ],
+          "books": [
+            {
+              "title": "Hidden Potential",
+              "author": "Adam Grant",
+              "description": "El verdadero potencial no se mide por los talentos innatos, sino por el carácter que desarrollamos. Todos podemos mejorar si trabajamos en las habilidades correctas, más allá de ventajas naturales."
+            },
+            {
+              "title": "A Thomas Jefferson Education",
+              "author": "Oliver DeMille",
+              "description": "Para Mapaches que buscan comprender los principios que sustentan la filosofía de Acton y Tinkuy. Critica el sistema educativo tradicional y reta a construir un ambiente que forme verdaderos líderes críticos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "challenger",
+      "name": "Challenger",
+      "subtitle": "Catalyst for Growth",
+      "stage": "Facing the Tests",
+      "traits": [
+        "Encouraging",
+        "firm",
+        "strategic"
+      ],
+      "task": "Encouraging independence and problem-solving",
+      "challenge": "Overcoming the instinct to rescue",
+      "monsters": [
+        "Self-Doubt",
+        "Overprotection",
+        "Defeat"
+      ],
+      "roles": [
+        {
+          "name": "Gatekeeper",
+          "description": "Tests readiness for greater responsibility. Faces Self-Doubt, learning to trust their instinct.",
+          "monster": "Self-Doubt",
+          "badges": [
+            {
+              "name": "Csikszentmihalyi's Flow",
+              "description": "El Flow es cuando cuerpo y mente se enfocan al máximo en un reto que importa. En Tinkuy, los Pumas aprenden a reconocer ese estado y crear las condiciones para entrar en él. Este badge te invita a reconocer el Flow en ti y modelarlo para tu Puma."
+            },
+            {
+              "name": "Dweck's Growth Mindset",
+              "description": "Al cultivar una mentalidad de crecimiento, le decimos a les demás: 'Creo que puedes hacerlo.' Quienes tienen una mentalidad de crecimiento tienen fe en las personas y en su capacidad de aprender."
+            }
+          ],
+          "books": [
+            {
+              "title": "Mindset: The New Psychology of Success",
+              "author": "Carol Dweck",
+              "description": "Transforma la manera en que entendemos el éxito. La mentalidad de crecimiento (creer que nuestras capacidades pueden desarrollarse) es clave para lograr el éxito en la vida."
+            },
+            {
+              "title": "Opening Minds",
+              "author": "Peter Johnston",
+              "description": "Las palabras importan. Decirle a tu Puma 'veamos cuántas palabras ya sabes' —esa sola palabra 'ya'— cambia todo. Muestra cómo el lenguaje moldea la forma de aprender y de verse a sí mismos."
+            },
+            {
+              "title": "Grit: The Power of Passion and Perseverance",
+              "author": "Angela Duckworth",
+              "description": "El éxito no depende del talento, sino de la perseverancia. La pasión sostenida en el tiempo es clave para lograr grandes cosas. Una invitación a valorar el esfuerzo, la constancia y el amor por lo que hacemos."
+            }
+          ]
+        },
+        {
+          "name": "Forge Master",
+          "description": "Shapes resilience through struggle. Battles Overprotection, learning when to step back.",
+          "monster": "Overprotection",
+          "badges": [
+            {
+              "name": "Empowerment: Triángulo del Empoderamiento",
+              "description": "Una de las responsabilidades más importantes es preparar a tu Puma para un mundo real. Si tu Puma ve el mundo como un Héroe, dará la bienvenida a los retos y actuará con amabilidad. Este badge ayuda a combatir la mentalidad de víctima."
+            },
+            {
+              "name": "The Marshmallow Delayed Gratification",
+              "description": "Contenerse ante la recompensa instantánea y demorar la gratificación desarrolla paciencia, apreciación, atención plena y gratitud. La satisfacción intensa de saber que esperaste hace que el resultado sea más dulce."
+            }
+          ],
+          "books": [
+            {
+              "title": "The Power of TED",
+              "author": "David Emerald",
+              "description": "Enseña, a través de una historia sencilla, cómo dejar de sentirnos víctimas y empezar a actuar como creadores de nuestra vida. Propone asumir retos con coraje, acompañar con respeto y tomar decisiones con responsabilidad."
+            },
+            {
+              "title": "Conversaciones difíciles (Difficult Conversations)",
+              "author": "Stone, Patton & Heen (Harvard)",
+              "description": "Guía clara para hablar de lo que realmente importa, sin destruir relaciones. Aprenderás a expresar lo que sientes sin atacar, escuchar más allá de las palabras, y mantenerte firme y sereno incluso cuando la otra persona está molesta."
+            },
+            {
+              "title": "Good Inside",
+              "author": "Dra. Becky Kennedy",
+              "description": "No tenemos que elegir entre poner límites y ser empáticos. Cambia el enfoque de corregir conductas a fortalecer vínculos, con herramientas para berrinches, ansiedad por separación o peleas entre hermanos."
+            },
+            {
+              "title": "The Optimistic Child",
+              "author": "Martin Seligman",
+              "description": "Enseña optimismo realista y resiliencia desde la infancia. No se trata de inflar la autoestima con frases vacías, sino de dar herramientas para interpretar el mundo con esperanza, sin negar la realidad."
+            }
+          ]
+        },
+        {
+          "name": "Trialwarden",
+          "description": "Fosters growth through necessary challenges. Overcomes Defeat, challenging their Puma to follow through.",
+          "monster": "Defeat",
+          "badges": [
+            {
+              "name": "Khan Academy Onramp",
+              "description": "Esta introducción a Khan Academy te ayudará a comprender cómo la gamificación, los videos y los ejercicios pueden brindar aprendizaje matemático de alta calidad. Aprende a rastrear el aprendizaje usando las últimas herramientas analíticas."
+            },
+            {
+              "name": "Olympian Pursuit of Excellence",
+              "description": "La excelencia no equivale a perfección. Se trata de combinar el grit con la armonía. Este badge es tu oportunidad para comprometerte a establecer y mantener altos estándares personales y convertirte en un modelo inspirador."
+            },
+            {
+              "name": "Sir Lancelot Quest",
+              "description": "Tu Puma estará profundamente involucrado en los Quests en Tinkuy. Comprender cómo funcionan los Quests te ayudará a disfrutar más de sus challenges y exhibitions. Quizás incluso decidas crear una Quest para ti."
+            }
+          ],
+          "books": [
+            {
+              "title": "Mathematical Mindsets",
+              "author": "Jo Boaler",
+              "description": "Invitación a desterrar el miedo a las matemáticas y reemplazarlo por confianza y curiosidad. Muestra cómo una mentalidad de crecimiento puede hacer que cualquier persona pase de la inseguridad a la confianza matemática."
+            },
+            {
+              "title": "Mindfulness",
+              "author": "Ellen J. Langer",
+              "description": "No se trata de meditar en silencio, sino de estar plenamente presente en todo lo que hacemos. Propone una atención activa, creativa y abierta al momento presente para vivir con más intención."
+            },
+            {
+              "title": "An Ethic of Excellence",
+              "author": "Ron Berger",
+              "description": "Visión poderosa de transformación educativa: construir una cultura escolar basada en una ética de la excelencia. El trabajo que vale la pena es aquel del que todos podemos sentirnos verdaderamente orgullosos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ally",
+      "name": "Ally",
+      "subtitle": "Supportive but Unintrusive",
+      "stage": "Trusting the Hero",
+      "traits": [
+        "Respectful",
+        "empowering",
+        "steadfast"
+      ],
+      "task": "Providing trust, perspective, and encouragement",
+      "challenge": "Accepting that their Puma's path may look different from their own expectations",
+      "monsters": [
+        "Wraith",
+        "Disapproval",
+        "Regret"
+      ],
+      "roles": [
+        {
+          "name": "Silent Watcher",
+          "description": "Observes without interference. Faces Wraith (fear of becoming irrelevant), trusting the bond of love.",
+          "monster": "Wraith",
+          "badges": [
+            {
+              "name": "Tu Plan Familiar",
+              "description": "Es hora de hacer una pausa y preguntar a cada integrante de la familia en qué aspira a convertirse, individualmente y como familia. No basta con una lista de tareas; necesitamos un plan con propósito compartido."
+            },
+            {
+              "name": "Leonard's Mastery",
+              "description": "La maestría es invertir tanto de ti misme en una causa que reconocer oportunidades y desempeñarte a un alto nivel se vuelve natural. Al aceptar este desafío, aprenderás sobre los retos de Maestría que enfrentará tu Puma en Tinkuy."
+            }
+          ],
+          "books": [
+            {
+              "title": "Three Big Questions for the Frantic Family",
+              "author": "Patrick Lencioni",
+              "description": "Aplica herramientas de liderazgo empresarial a la familia. Propone preguntas clave: ¿Qué hace única a nuestra familia? ¿Cuál es nuestra prioridad más importante ahora? Una invitación a liderar la familia con intención y conexión."
+            },
+            {
+              "title": "Mastery",
+              "author": "George Leonard",
+              "description": "El verdadero camino hacia la excelencia no es la velocidad ni el talento, sino el compromiso profundo con la práctica diaria. Las 5 claves para dominar cualquier disciplina y disfrutar el proceso de crecer paso a paso."
+            },
+            {
+              "title": "Dare to Lead",
+              "author": "Brené Brown",
+              "description": "Un líder es cualquier persona dispuesta a reconocer el potencial de otros y tener el coraje de desarrollarlo. Necesitamos habilidades profundamente humanas: conexión, empatía y coraje."
+            }
+          ]
+        },
+        {
+          "name": "Steady Flame",
+          "description": "A warm, guiding presence without control. Battles Disapproval, learning to accept their Puma's choices.",
+          "monster": "Disapproval",
+          "badges": [
+            {
+              "name": "Leadership: Building a Healthy Tribe",
+              "description": "Construir una tribu fuerte y sana es el corazón del trabajo en Tinkuy. No es fácil ni rápido. Aprende el proceso desde el liderazgo inicial del Mapache hasta el momento en que les Pumas se gobiernan a sí mismos."
+            }
+          ],
+          "books": [
+            {
+              "title": "The Anxious Generation",
+              "author": "Jonathan Haidt",
+              "description": "Explica cómo la infancia fue recableada por las pantallas. La vida social se volvió un algoritmo, afectando el sueño, la atención y el desarrollo emocional. Ofrece una hoja de ruta para restaurar una infancia más humana."
+            },
+            {
+              "title": "The Price of Privilege",
+              "author": "Madeline Levine",
+              "description": "Muestra cómo una crianza sobreprotectora y enfocada en el rendimiento puede dejar heridas profundas. Un llamado urgente a reenfocar la crianza desde el control hacia la conexión y el acompañamiento respetuoso."
+            },
+            {
+              "title": "Tribal Leadership",
+              "author": "Dave Logan, John King & Halee Fischer-Wright",
+              "description": "Toda organización está compuesta por tribus conectadas por relaciones y valores. Ayuda a identificar en qué nivel tribal está tu familia o equipo y cómo llevarlas al siguiente nivel."
+            },
+            {
+              "title": "Dare to Lead",
+              "author": "Brené Brown",
+              "description": "Cuatro habilidades esenciales del liderazgo valiente: todas enseñables y medibles. Liderar con valentía significa hacer preguntas difíciles, compartir el poder y enfrentar conversaciones incómodas con empatía."
+            }
+          ]
+        },
+        {
+          "name": "Guiding Hand",
+          "description": "Offers support without taking over. Overcomes Regret, giving grace and embracing the chance to repair.",
+          "monster": "Regret",
+          "badges": [
+            {
+              "name": "Brown's Imperfection",
+              "description": "La perfección no solo es inalcanzable, también es enemiga del crecimiento. Abrazar la imperfección es un acto de valentía: compartir errores nos hace más humanos, ser honestos sobre fallas construye confianza."
+            },
+            {
+              "name": "Vulnerability: Learning to Say I'm Sorry",
+              "description": "Aprende a pedir disculpas de forma auténtica usando los cuatro pasos para una disculpa excelente: expresar remordimiento, aceptar responsabilidad, ofrecer enmienda y prometer mejorar."
+            }
+          ],
+          "books": [
+            {
+              "title": "The Gifts of Imperfection",
+              "author": "Brené Brown",
+              "description": "A través de diez principios transformadores, invita a soltar la carga de lo que 'deberíamos' ser y a abrazar, con amor y compasión, quienes realmente somos. Vivir con el corazón abierto y sentirnos suficientes."
+            },
+            {
+              "title": "Daring Greatly",
+              "author": "Brené Brown",
+              "description": "Derrumba el mito de que la vulnerabilidad es debilidad. La vulnerabilidad es el origen del amor, la pertenencia, la alegría, la empatía, la innovación y la creatividad. Atreverse grandemente es una práctica."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "legacy",
+      "name": "Legacy",
+      "subtitle": "Inspiration & Imprint",
+      "stage": "A New Beginning",
+      "traits": [
+        "Inspirational",
+        "content",
+        "timeless"
+      ],
+      "task": "Celebrating the journey and embracing a new phase",
+      "challenge": "Letting go with pride and confidence",
+      "monsters": [
+        "Drift",
+        "Distance",
+        "Change"
+      ],
+      "roles": [
+        {
+          "name": "Echo of Purpose",
+          "description": "Their values live on through their Puma's actions. Faces Drift, recognizing their guidance shaped a purposeful individual.",
+          "monster": "Drift",
+          "badges": [
+            {
+              "name": "Gratitude",
+              "description": "La gratitud no es un sentimiento, es una elección, una disciplina y un escudo contra la amargura. En el camino del héroe, la gratitud es lo que mantiene al héroe avanzando: humilde, despierto y listo para lo que sigue."
+            }
+          ],
+          "books": [
+            {
+              "title": "Mindfulness",
+              "author": "Ellen J. Langer",
+              "description": "Estar plenamente presentes en todo lo que hacemos. Cuando dejamos de vivir en piloto automático, todo cambia. Un libro para mentes curiosas que buscan transformar su forma de ver y vivir el mundo."
+            },
+            {
+              "title": "How To Raise Successful People",
+              "author": "Esther Wojcicki",
+              "description": "La fórmula TRICK: Confianza, Respeto, Independencia, Colaboración y Amabilidad. Menos control, más confianza. Habla con tu hije como con cualquier ser pensante. Acompaña sin dominar."
+            }
+          ]
+        },
+        {
+          "name": "Beacon of Trust",
+          "description": "A steady light as their Puma forges ahead. Battles Distance, embracing their Puma's need for independence.",
+          "monster": "Distance",
+          "badges": [],
+          "books": [
+            {
+              "title": "The Power of Moments",
+              "author": "Chip Heath & Dan Heath",
+              "description": "Los momentos que más marcan nuestras vidas no tienen por qué ser producto del azar. Revela los ingredientes de los momentos extraordinarios: elevación, conexión, orgullo, cambio. Cualquiera puede aprender a crearlos."
+            },
+            {
+              "title": "Education for Judgment",
+              "author": "C. Roland Christensen",
+              "description": "Cómo el diálogo bien conducido puede ser una de las herramientas más poderosas para el aprendizaje profundo. Una guía para liderar discusiones significativas donde cada voz tiene valor."
+            }
+          ]
+        },
+        {
+          "name": "Legacy Keeper",
+          "description": "Inspires the next generation by example. Crosses the Final Threshold with peace, fulfillment, and gratitude.",
+          "monster": "Change",
+          "badges": [],
+          "books": [
+            {
+              "title": "The Path to Purpose",
+              "author": "William Damon",
+              "description": "La clave es desarrollar un claro sentido de propósito, esa chispa interna que motiva y dirige la vida. Ofrece los nueve factores cruciales que permiten a los jóvenes triunfar a pesar de las adversidades."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

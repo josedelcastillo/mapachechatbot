@@ -1,0 +1,506 @@
+{
+  "scraped_at": "2026-04-24T13:19:18Z",
+  "learner_count": 51,
+  "learners": {
+    "Alejandra Delgadillo": {
+      "user_id": "26084",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado"
+      ],
+      "in_progress": {}
+    },
+    "Alvaro\t Guerrero": {
+      "user_id": "20847",
+      "approved": [
+        "Technology: Apps de mi Puma",
+        "Agency: Límites, opciones y consecuencias"
+      ],
+      "in_progress": {
+        "Dweck's Growth Mindset": 17
+      }
+    },
+    "Arturo Arellano": {
+      "user_id": "20808",
+      "approved": [
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Badge Book: The Gardener and the Carpenter"
+      ],
+      "in_progress": {}
+    },
+    "Brissy Cáceres": {
+      "user_id": "20809",
+      "approved": [
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Vulnerability: Learning to Say I'm Sorry"
+      ],
+      "in_progress": {}
+    },
+    "Camila\t Gastelumendi": {
+      "user_id": "20810",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Nurture: Criar con respeto",
+        "Badge Book: Entre Padres e Hijos",
+        "Trust: Relación con l@s guías",
+        "Agency: Límites, opciones y consecuencias",
+        "Tu Plan Familiar"
+      ],
+      "in_progress": {
+        "Montessori: Seeing with New Eyes": 20
+      }
+    },
+    "Carla Laredo": {
+      "user_id": "20811",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma"
+      ],
+      "in_progress": {}
+    },
+    "Carlos Jiménez": {
+      "user_id": "20813",
+      "approved": [
+        "Technology: Apps de mi Puma",
+        "Agency: Límites, opciones y consecuencias"
+      ],
+      "in_progress": {}
+    },
+    "Daniel\t McBride": {
+      "user_id": "20815",
+      "approved": [
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma"
+      ],
+      "in_progress": {}
+    },
+    "Diana Díaz": {
+      "user_id": "20814",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Nurture: Criar con respeto",
+        "Badge Book: Entre Padres e Hijos"
+      ],
+      "in_progress": {}
+    },
+    "Enrique Hernández": {
+      "user_id": "25764",
+      "approved": [],
+      "in_progress": {}
+    },
+    "Evelyn\t Quispe": {
+      "user_id": "20816",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma"
+      ],
+      "in_progress": {}
+    },
+    "Fernando Ureta": {
+      "user_id": "20817",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Nurture: Criar con respeto",
+        "Badge Book: Entre Padres e Hijos",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Agency: Límites, opciones y consecuencias",
+        "Accountability: Sistema de contratos y rendición de cuentas",
+        "Vulnerability: Learning to Say I'm Sorry"
+      ],
+      "in_progress": {}
+    },
+    "Fressia Sánchez": {
+      "user_id": "25765",
+      "approved": [],
+      "in_progress": {}
+    },
+    "Gabriela\t Valencia": {
+      "user_id": "20818",
+      "approved": [
+        "Technology: Apps de mi Puma"
+      ],
+      "in_progress": {}
+    },
+    "Gina\t Sare": {
+      "user_id": "20819",
+      "approved": [],
+      "in_progress": {}
+    },
+    "Gracia Dextre": {
+      "user_id": "20812",
+      "approved": [
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma"
+      ],
+      "in_progress": {}
+    },
+    "Gustavo Zambrano": {
+      "user_id": "20820",
+      "approved": [
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Badge Book: Courage to Grow",
+        "Joseph Campbell´s Hero´s Journey",
+        "Accountability: Sistema de contratos y rendición de cuentas"
+      ],
+      "in_progress": {
+        "Montessori: Seeing with New Eyes": 20
+      }
+    },
+    "Héctor Montellano": {
+      "user_id": "26085",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado"
+      ],
+      "in_progress": {
+        "Montessori: Seeing with New Eyes": 40
+      }
+    },
+    "Iris Otero": {
+      "user_id": "26662",
+      "approved": [],
+      "in_progress": {}
+    },
+    "Jorge\t Cabeza": {
+      "user_id": "20821",
+      "approved": [
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma"
+      ],
+      "in_progress": {}
+    },
+    "Jose Castañeda": {
+      "user_id": "25760",
+      "approved": [],
+      "in_progress": {
+        "Boundaries: Una cultura de respeto y cuidado": 33,
+        "Nurture: Criar con respeto": 33
+      }
+    },
+    "Jose Del Castillo": {
+      "user_id": "20822",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Badge Book: Courage to Grow",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Badge Book: The Gardener and the Carpenter"
+      ],
+      "in_progress": {
+        "Nurture: Criar con respeto": 33,
+        "Montessori: Seeing with New Eyes": 20,
+        "Tu Plan Familiar": 75
+      }
+    },
+    "José Fajardo": {
+      "user_id": "20823",
+      "approved": [
+        "Nurture: Criar con respeto",
+        "Agency: Límites, opciones y consecuencias"
+      ],
+      "in_progress": {
+        "Boundaries: Una cultura de respeto y cuidado": 83,
+        "Trust: Relación con l@s guías": 75,
+        "Technology: Apps de mi Puma": 21
+      }
+    },
+    "Juana\t Balvin": {
+      "user_id": "20824",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Nurture: Criar con respeto",
+        "Badge Book: Entre Padres e Hijos",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Your Family Journal",
+        "Writing with traits",
+        "Agency: Límites, opciones y consecuencias",
+        "Accountability: Sistema de contratos y rendición de cuentas",
+        "Transparency: Productividad personal y monitoreo",
+        "Badge Book: Good Inside / Educar sin miedo"
+      ],
+      "in_progress": {
+        "Reading at Tinkuy": 50,
+        "Montessori: Seeing with New Eyes": 20
+      }
+    },
+    "Juan Antonio Vasquez": {
+      "user_id": "21664",
+      "approved": [],
+      "in_progress": {}
+    },
+    "Julio\t Príncipe": {
+      "user_id": "20825",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Nurture: Criar con respeto",
+        "Badge Book: The 5 Love Languages of Children",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Badge Book: Courage to Grow",
+        "Hero Stories",
+        "Badge Book: Good Inside / Educar sin miedo"
+      ],
+      "in_progress": {}
+    },
+    "Julyeth Alcantara": {
+      "user_id": "25761",
+      "approved": [
+        "Badge Book: Unschooling Rules"
+      ],
+      "in_progress": {
+        "Boundaries: Una cultura de respeto y cuidado": 100,
+        "Nurture: Criar con respeto": 100
+      }
+    },
+    "Kailey Nuñez": {
+      "user_id": "20826",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Nurture: Criar con respeto",
+        "Badge Book: Courage to Grow",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Joseph Campbell´s Hero´s Journey",
+        "Agency: Límites, opciones y consecuencias",
+        "Children's Business Fair",
+        "Badge Book: Good Inside / Educar sin miedo",
+        "Tu Plan Familiar"
+      ],
+      "in_progress": {
+        "Dweck's Growth Mindset": 17
+      }
+    },
+    "Karenina Alvarez": {
+      "user_id": "26736",
+      "approved": [],
+      "in_progress": {
+        "Boundaries: Una cultura de respeto y cuidado": 67
+      }
+    },
+    "Linda Concepción": {
+      "user_id": "25767",
+      "approved": [],
+      "in_progress": {}
+    },
+    "Lucía\t Guerrero": {
+      "user_id": "20828",
+      "approved": [
+        "Technology: Apps de mi Puma"
+      ],
+      "in_progress": {}
+    },
+    "Luciana Franco": {
+      "user_id": "21265",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Badge Book: Entre Padres e Hijos"
+      ],
+      "in_progress": {}
+    },
+    "Luciano Gorriti": {
+      "user_id": "25762",
+      "approved": [],
+      "in_progress": {}
+    },
+    "Luis Rodriguez": {
+      "user_id": "25766",
+      "approved": [],
+      "in_progress": {}
+    },
+    "Luz Chang Navarro": {
+      "user_id": "20829",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Accountability: Sistema de contratos y rendición de cuentas",
+        "Badge Book: Positive Discipline A-Z - 1001 Solutions",
+        "Transparency: Productividad personal y monitoreo"
+      ],
+      "in_progress": {}
+    },
+    "Manuel Rouillon": {
+      "user_id": "20830",
+      "approved": [
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Joseph Campbell´s Hero´s Journey"
+      ],
+      "in_progress": {}
+    },
+    "Marcia\t Rivas": {
+      "user_id": "20832",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma"
+      ],
+      "in_progress": {}
+    },
+    "Marco\t Ramos": {
+      "user_id": "20831",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Nurture: Criar con respeto",
+        "Badge Book: Entre Padres e Hijos",
+        "Trust: Relación con l@s guías"
+      ],
+      "in_progress": {
+        "Agency: Límites, opciones y consecuencias": 67
+      }
+    },
+    "Maria Ines \t Romero": {
+      "user_id": "20833",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Nurture: Criar con respeto",
+        "Badge Book: Entre Padres e Hijos",
+        "Trust: Relación con l@s guías",
+        "Agency: Límites, opciones y consecuencias",
+        "Accountability: Sistema de contratos y rendición de cuentas"
+      ],
+      "in_progress": {}
+    },
+    "Martha\t Aguero": {
+      "user_id": "20835",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Agency: Límites, opciones y consecuencias",
+        "Tu Plan Familiar"
+      ],
+      "in_progress": {}
+    },
+    "Martín\t Vegas": {
+      "user_id": "20836",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado"
+      ],
+      "in_progress": {
+        "Reading at Tinkuy": 50
+      }
+    },
+    "Mónica Salazar": {
+      "user_id": "20807",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Nurture: Criar con respeto",
+        "Badge Book: The 5 Love Languages of Children",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Badge Book: Courage to Grow",
+        "Writing with traits",
+        "Reading at Tinkuy",
+        "Hero Stories",
+        "Joseph Campbell´s Hero´s Journey",
+        "Learning Through Questions",
+        "Agency: Límites, opciones y consecuencias",
+        "Accountability: Sistema de contratos y rendición de cuentas",
+        "Transparency: Productividad personal y monitoreo",
+        "Mitra: Cutting Edge Education",
+        "Dweck's Growth Mindset",
+        "Empowerment: Triángulo del Empoderamiento",
+        "Badge Book: Good Inside / Educar sin miedo",
+        "Olympian Pursuit of Excellence",
+        "Tu Plan Familiar"
+      ],
+      "in_progress": {
+        "Montessori: Seeing with New Eyes": 20,
+        "The Marshmallow Delayed Gratification": 100
+      }
+    },
+    "Morita Rejas": {
+      "user_id": "26737",
+      "approved": [
+        "Badge Book: The 5 Love Languages of Children",
+        "Badge Book: Courage to Grow"
+      ],
+      "in_progress": {
+        "Boundaries: Una cultura de respeto y cuidado": 100,
+        "Nurture: Criar con respeto": 33
+      }
+    },
+    "Nereo\t Sanchez": {
+      "user_id": "20845",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado"
+      ],
+      "in_progress": {}
+    },
+    "Pedro\t Montoya": {
+      "user_id": "20837",
+      "approved": [
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Badge Book: The Gardener and the Carpenter"
+      ],
+      "in_progress": {}
+    },
+    "Pilar Gárate": {
+      "user_id": "20839",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Accountability: Sistema de contratos y rendición de cuentas",
+        "Dweck's Growth Mindset",
+        "Empowerment: Triángulo del Empoderamiento",
+        "Vulnerability: Learning to Say I'm Sorry"
+      ],
+      "in_progress": {}
+    },
+    "Raul Gutierrez": {
+      "user_id": "25763",
+      "approved": [],
+      "in_progress": {}
+    },
+    "Rodolfo\t Mondion": {
+      "user_id": "20841",
+      "approved": [
+        "Nurture: Criar con respeto",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Agency: Límites, opciones y consecuencias"
+      ],
+      "in_progress": {
+        "Boundaries: Una cultura de respeto y cuidado": 17
+      }
+    },
+    "Rodrigo Benza": {
+      "user_id": "20840",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Tu Plan Familiar"
+      ],
+      "in_progress": {}
+    },
+    "Sandra\t Lizardo": {
+      "user_id": "20842",
+      "approved": [
+        "Boundaries: Una cultura de respeto y cuidado",
+        "Trust: Relación con l@s guías",
+        "Technology: Apps de mi Puma",
+        "Badge Book: Courage to Grow",
+        "Writing with traits",
+        "Reading at Tinkuy",
+        "Hero Stories",
+        "Accountability: Sistema de contratos y rendición de cuentas",
+        "Transparency: Productividad personal y monitoreo"
+      ],
+      "in_progress": {}
+    },
+    "Yuri\t Ccasa": {
+      "user_id": "20844",
+      "approved": [],
+      "in_progress": {}
+    }
+  }
+}

@@ -16,6 +16,8 @@ from aws_cdk import (
 from constructs import Construct
 import os
 
+BADGE_PROGRESS_S3_KEY = "badge_progress/all_mapaches.json"
+
 
 class ChatbotStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
@@ -103,11 +105,11 @@ class ChatbotStack(Stack):
             code=lambda_.Code.from_asset(src_dir),
             role=lambda_role,
             timeout=Duration.seconds(30),
-            memory_size=256,
+            memory_size=512,
             environment={
                 "DYNAMODB_TABLE_NAME": sessions_table.table_name,
                 "S3_BUCKET_NAME": kb_bucket.bucket_name,
-                "KB_S3_KEY": "knowledge_base/journey.json",
+                "BADGE_PROGRESS_S3_KEY": BADGE_PROGRESS_S3_KEY,
                 "BEDROCK_MODEL_ID": "anthropic.claude-3-haiku-20240307-v1:0",
                 "AWS_REGION_NAME": self.region,
             },
