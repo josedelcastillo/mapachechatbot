@@ -53,6 +53,7 @@ def load_session(session_id: str) -> dict:
         "summary": "",
         "detected_role": None,
         "detected_language": None,
+        "mapache_name": None,
     }
 
 
@@ -78,6 +79,7 @@ def save_message(
             "summary": session.get("summary", ""),
             "detected_role": session.get("detected_role"),
             "detected_language": session.get("detected_language"),
+            "mapache_name": session.get("mapache_name"),
             "updated_at": now,
             "ttl": ttl,
         })

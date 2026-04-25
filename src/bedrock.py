@@ -27,16 +27,17 @@ def _client():
     return _bedrock_client
 
 
-def invoke_claude(prompt: str, max_tokens: int = 1024) -> str:
+def invoke_claude(system_prompt: str, user_message: str, max_tokens: int = 1024) -> str:
     """
     Send a prompt to Claude Haiku and return the text response.
-    Uses the Anthropic Messages API format via Bedrock.
+    Uses the Anthropic Messages API format via Bedrock with a proper system prompt.
     """
     body = {
         "anthropic_version": "bedrock-2023-05-31",
         "max_tokens": max_tokens,
+        "system": system_prompt,
         "messages": [
-            {"role": "user", "content": prompt},
+            {"role": "user", "content": user_message},
         ],
     }
 

@@ -8,7 +8,7 @@ import json
 import logging
 
 from memory import load_session, save_message, maybe_update_summary
-from rag import build_prompt, detect_role_hint, detect_language
+from rag import build_prompt, detect_role_hint, detect_language, lookup_casa, lookup_avatar
 from bedrock import invoke_claude
 
 logger = logging.getLogger()
@@ -37,24 +37,43 @@ def lambda_handler(event: dict, context) -> dict:
         if language:
             session["detected_language"] = language
 
+        # Detect mapache name from user message when not yet known.
+        # We check if the message is a short reply (likely answering "what's your name?")
+        # and if it matches a known mapache in the casa registry.
+        if not session.get("mapache_name"):
+            detected_name = _detect_mapache_name(user_message)
+            if detected_name:
+                session["mapache_name"] = detected_name
+
         # Build prompt with context + knowledge base
-        prompt = build_prompt(
+        system_prompt, user_content = build_prompt(
             session=session,
             user_message=user_message,
             role_hint=role_hint,
         )
 
         # Call Claude Haiku via Bedrock
-        assistant_response = invoke_claude(prompt)
+        assistant_response = invoke_claude(system_prompt, user_content)
 
         # Persist messages and optionally update summary
         save_message(session_id, session, user_message, assistant_response)
         maybe_update_summary(session_id, session)
 
-        return _response(200, {
+        # Resolve avatar — include in response so the frontend can display the
+        # mapache's photo immediately after their name is identified.
+        mapache_name = session.get("mapache_name")
+        avatar_file = lookup_avatar(mapache_name) if mapache_name else None
+
+        result: dict = {
             "session_id": session_id,
             "response": assistant_response,
-        })
+        }
+        if mapache_name:
+            result["mapache_name"] = mapache_name
+        if avatar_file:
+            result["avatar_url"] = f"mapache-fotos/{avatar_file}"
+
+        return _response(200, result)
 
     except ValueError as e:
         logger.warning("Validation error: %s", e)
@@ -62,6 +81,21 @@ def lambda_handler(event: dict, context) -> dict:
     except Exception as e:
         logger.exception("Unexpected error")
         return _response(500, {"error": "Internal server error"})
+
+
+def _detect_mapache_name(message: str) -> str | None:
+    """Try to match the user message against known mapache names.
+    Checks substrings so partial names like 'Jose' or 'Kailey' are caught.
+    Returns the canonical name (as stored in _CASAS keys, title-cased) or None.
+    """
+    from rag import _CASAS
+    lower = message.lower().strip()
+    # Try longest matches first to avoid 'jose' matching 'jose fajardo' before 'jose del castillo'
+    candidates = sorted(_CASAS.keys(), key=len, reverse=True)
+    for candidate in candidates:
+        if candidate in lower:
+            return candidate.title()
+    return None
 
 
 def _parse_body(event: dict) -> dict:

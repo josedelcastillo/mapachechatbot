@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make deploy *)",
+      "WebFetch(domain:journey.actonacademy.org)",
+      "Bash(python scraper/run_local.py)",
+      "Bash(git checkout *)"
+    ]
+  }
+}

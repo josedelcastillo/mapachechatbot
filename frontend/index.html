@@ -77,9 +77,14 @@
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.1rem; flex-shrink: 0; align-self: flex-end;
+      overflow: hidden;
     }
     .msg.user .avatar { background: var(--accent); }
     .msg.bot  .avatar { background: var(--accent-light); }
+    .avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover; border-radius: 50%;
+    }
 
     .bubble {
       max-width: 78%;
@@ -170,12 +175,9 @@
 <div id="chat">
   <div class="msg bot">
     <div class="avatar">🦝</div>
-    <div class="bubble">¡Hola! Soy tu guía en el Viaje del Héroe de Tinkuy Marka.
+    <div class="bubble">¡Hola! Soy tu guía en el Viaje del Héroe de Tinkuy Marka. 🐾
 
-Estoy aquí para acompañarte como Mapache — ya sea que estés en tus primeros pasos como <strong>Guardian</strong>, encontrando tu camino como <strong>Mentor</strong>, o navegando cualquier etapa del camino.
-
-Cuéntame, ¿qué está pasando contigo o con tu Puma últimamente?
-En base a lo que me digas te sugeriré badges y/o libros para atravesar el camino.</div>
+Para acompañarte mejor en tu camino, ¿me puedes decir tu nombre?</div>
   </div>
 </div>
 
@@ -202,6 +204,7 @@ En base a lo que me digas te sugeriré badges y/o libros para atravesar el camin
 <script>
   let sessionId = 'session-' + Math.random().toString(36).slice(2, 10);
   let isLoading = false;
+  let userAvatarUrl = null;   // set when Lambda returns avatar_url
 
   // Show warning if API not configured
   if (!API_URL) {
@@ -234,6 +237,10 @@ En base a lo que me digas te sugeriré badges y/o libros para atravesar el camin
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       removeTyping();
+      if (data.avatar_url && !userAvatarUrl) {
+        userAvatarUrl = data.avatar_url;
+        _refreshInitialUserAvatars();
+      }
       appendMessage('bot', data.response || '(Sin respuesta)');
     } catch (err) {
       removeTyping();
@@ -243,13 +250,29 @@ En base a lo que me digas te sugeriré badges y/o libros para atravesar el camin
     }
   }
 
+  function _avatarHtml(role) {
+    if (role === 'bot') return '🦝';
+    if (userAvatarUrl) {
+      const safe = userAvatarUrl.replace(/"/g, '%22');
+      return `<img src="${safe}" alt="avatar" onerror="this.outerHTML='👤'">`;
+    }
+    return '👤';
+  }
+
+  function _refreshInitialUserAvatars() {
+    // Update any user avatars rendered before the photo was known
+    document.querySelectorAll('.msg.user .avatar').forEach(el => {
+      if (el.textContent === '👤') el.innerHTML = _avatarHtml('user');
+    });
+  }
+
   function appendMessage(role, text) {
     const chat = document.getElementById('chat');
     const div = document.createElement('div');
     div.className = `msg ${role}`;
     const content = role === 'bot' ? renderMarkdown(text) : escHtml(text);
     div.innerHTML = `
-      <div class="avatar">${role === 'user' ? '👤' : '🦝'}</div>
+      <div class="avatar">${_avatarHtml(role)}</div>
       <div class="bubble">${content}</div>`;
     chat.appendChild(div);
     chat.scrollTop = chat.scrollHeight;
@@ -259,7 +282,7 @@ En base a lo que me digas te sugeriré badges y/o libros para atravesar el camin
     const chat = document.getElementById('chat');
     const div = document.createElement('div');
     div.id = 'typing'; div.className = 'msg bot';
-    div.innerHTML = `<div class="avatar">🦝</div>
+    div.innerHTML = `<div class="avatar" style="background:var(--accent-light)">🦝</div>
       <div class="bubble typing-dots"><span></span><span></span><span></span></div>`;
     chat.appendChild(div);
     chat.scrollTop = chat.scrollHeight;
