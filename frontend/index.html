@@ -209,7 +209,7 @@
     #ranking-subtabs {
       display: flex;
       gap: 8px;
-      padding: 14px 16px 10px;
+      padding: 14px 16px 6px;
       flex-shrink: 0;
     }
     .subtab-btn {
@@ -230,6 +230,28 @@
       color: white;
     }
     .subtab-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+    #ranking-casa-filters {
+      display: flex;
+      gap: 6px;
+      padding: 4px 16px 10px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .casa-btn {
+      padding: 4px 12px;
+      border: 1.5px solid var(--border);
+      background: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .casa-btn:hover:not(.active) { opacity: 0.75; }
+    .casa-btn.active { color: white; border-color: transparent; }
 
     #ranking-list {
       flex: 1;
@@ -389,6 +411,13 @@ Para acompañarte mejor en tu camino, ¿me puedes decir tu nombre?</div>
     <button class="subtab-btn active" data-subtab="all_time" onclick="switchSubTab('all_time')">Todos los tiempos</button>
     <button class="subtab-btn" data-subtab="last_3_months" onclick="switchSubTab('last_3_months')">Últimos 3 meses</button>
   </div>
+  <div id="ranking-casa-filters">
+    <button class="casa-btn active" data-casa="" onclick="switchCasaFilter('')" style="background:var(--accent);border-color:var(--accent)">Todas</button>
+    <button class="casa-btn" data-casa="Chavin" onclick="switchCasaFilter('Chavin')">Chavin</button>
+    <button class="casa-btn" data-casa="Wari"   onclick="switchCasaFilter('Wari')">Wari</button>
+    <button class="casa-btn" data-casa="Moche"  onclick="switchCasaFilter('Moche')">Moche</button>
+    <button class="casa-btn" data-casa="Nazca"  onclick="switchCasaFilter('Nazca')">Nazca</button>
+  </div>
   <div id="ranking-list">
     <div class="ranking-empty">Cargando ranking…</div>
   </div>
@@ -405,9 +434,10 @@ Para acompañarte mejor en tu camino, ¿me puedes decir tu nombre?</div>
 
   /* ───────────────────────────────── TABS ───────────────────────────────── */
 
-  let rankingData   = null;
-  let rankingLoaded = false;
-  let activeSubTab  = 'all_time';
+  let rankingData      = null;
+  let rankingLoaded    = false;
+  let activeSubTab     = 'all_time';
+  let activeCasaFilter = '';
 
   const CASA_COLORS = {
     Chavin: '#4a90d9',
@@ -432,7 +462,7 @@ Para acompañarte mejor en tu camino, ¿me puedes decir tu nombre?</div>
       const res = await fetch('ranking.json');
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       rankingData = await res.json();
-      renderRankingTab(activeSubTab);
+      renderRankingTab();
     } catch (e) {
       document.getElementById('ranking-list').innerHTML =
         '<div class="ranking-empty">No se pudieron cargar los datos.</div>';
@@ -444,30 +474,49 @@ Para acompañarte mejor en tu camino, ¿me puedes decir tu nombre?</div>
     document.querySelectorAll('.subtab-btn').forEach(btn =>
       btn.classList.toggle('active', btn.dataset.subtab === key)
     );
-    if (rankingData) renderRankingTab(key);
+    if (rankingData) renderRankingTab();
   }
 
-  function renderRankingTab(key) {
+  function switchCasaFilter(casa) {
+    activeCasaFilter = casa;
+    document.querySelectorAll('.casa-btn').forEach(btn => {
+      const isActive = btn.dataset.casa === casa;
+      btn.classList.toggle('active', isActive);
+      const color = CASA_COLORS[btn.dataset.casa] || 'var(--accent)';
+      btn.style.background    = isActive ? color : '';
+      btn.style.borderColor   = isActive ? color : '';
+    });
+    if (rankingData) renderRankingTab();
+  }
+
+  function renderRankingTab() {
     const list = document.getElementById('ranking-list');
-    const rows = rankingData?.[key] ?? [];
+    let rows = rankingData?.[activeSubTab] ?? [];
+
+    if (activeCasaFilter) {
+      rows = rows.filter(r => r.casa === activeCasaFilter);
+    }
 
     if (rows.length === 0) {
       list.innerHTML = '<div class="ranking-empty">Sin badges en este período.</div>';
       return;
     }
 
-    const meta = key === 'all_time'
-      ? `${rows.length} mapaches · ${rankingData.total_unique_badges} badges posibles`
-      : `${rows.length} mapaches activos en los últimos 3 meses`;
+    const total    = rankingData?.[activeSubTab]?.length ?? rows.length;
+    const casaLabel = activeCasaFilter ? ` · Casa ${activeCasaFilter}` : '';
+    const meta = activeSubTab === 'all_time'
+      ? `${rows.length} mapaches${casaLabel} · ${rankingData.total_unique_badges} badges posibles`
+      : `${rows.length} mapaches activos en los últimos 3 meses${casaLabel}`;
 
-    const rowsHtml = rows.map(r => {
-      const medal    = r.rank === 1 ? '🥇' : r.rank === 2 ? '🥈' : r.rank === 3 ? '🥉' : r.rank;
-      const isTop3   = r.rank <= 3;
+    const rowsHtml = rows.map((r, i) => {
+      const pos    = i + 1;
+      const medal  = pos === 1 ? '🥇' : pos === 2 ? '🥈' : pos === 3 ? '🥉' : pos;
+      const isTop3 = pos <= 3;
       const avatarHtml = r.avatar
         ? `<img src="${r.avatar.replace(/"/g,'%22')}" alt="${escHtml(r.name)}" onerror="this.outerHTML='🦝'">`
         : '🦝';
       const casaColor = CASA_COLORS[r.casa] || '#8a6e56';
-      const casaHtml  = r.casa
+      const casaHtml  = (!activeCasaFilter && r.casa)
         ? `<div class="rank-casa" style="background:${casaColor}">${escHtml(r.casa)}</div>`
         : '';
       return `
