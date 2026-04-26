@@ -14,6 +14,7 @@ import json
 import logging
 import os
 import time
+from datetime import datetime, timezone
 
 import boto3
 from boto3.dynamodb.conditions import Key
@@ -24,6 +25,7 @@ logger = logging.getLogger()
 TABLE_NAME = os.environ["DYNAMODB_TABLE_NAME"]
 SHORT_TERM_LIMIT = 6       # messages kept in recent context
 SUMMARY_EVERY_N = 10       # update summary every N messages
+DAILY_MESSAGE_LIMIT = 20   # max user messages per session per day
 
 _dynamodb = None
 
@@ -57,6 +59,18 @@ def load_session(session_id: str) -> dict:
     }
 
 
+def _today() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
+def check_daily_limit(session: dict) -> bool:
+    """Return True if the session has reached the daily message limit."""
+    today = _today()
+    if session.get("daily_date") != today:
+        return False
+    return int(session.get("daily_count", 0)) >= DAILY_MESSAGE_LIMIT
+
+
 def save_message(
     session_id: str,
     session: dict,
@@ -69,6 +83,13 @@ def save_message(
     messages.append({"role": "assistant", "content": assistant_response})
     session["messages"] = messages
 
+    today = _today()
+    if session.get("daily_date") != today:
+        session["daily_date"] = today
+        session["daily_count"] = 1
+    else:
+        session["daily_count"] = int(session.get("daily_count", 0)) + 1
+
     now = int(time.time())
     ttl = now + 7 * 24 * 3600  # 7 days
 
@@ -80,6 +101,8 @@ def save_message(
             "detected_role": session.get("detected_role"),
             "detected_language": session.get("detected_language"),
             "mapache_name": session.get("mapache_name"),
+            "daily_date": session["daily_date"],
+            "daily_count": session["daily_count"],
             "updated_at": now,
             "ttl": ttl,
         })

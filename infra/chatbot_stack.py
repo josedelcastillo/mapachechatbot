@@ -138,8 +138,8 @@ class ChatbotStack(Stack):
             description="Tinkuy Marka - Mapache Hero's Journey Chatbot API",
             deploy_options=apigw.StageOptions(
                 stage_name="prod",
-                throttling_burst_limit=50,
-                throttling_rate_limit=20,
+                throttling_burst_limit=5,
+                throttling_rate_limit=2,
                 logging_level=apigw.MethodLoggingLevel.INFO,
                 access_log_destination=apigw.LogGroupLogDestination(log_group),
                 access_log_format=apigw.AccessLogFormat.json_with_standard_fields(

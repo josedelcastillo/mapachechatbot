@@ -7,7 +7,7 @@ Returns:  { "response": "...", "session_id": "..." }
 import json
 import logging
 
-from memory import load_session, save_message, maybe_update_summary
+from memory import load_session, save_message, maybe_update_summary, check_daily_limit, DAILY_MESSAGE_LIMIT
 from rag import build_prompt, detect_role_hint, detect_language, lookup_casa, lookup_avatar
 from bedrock import invoke_claude
 
@@ -44,6 +44,21 @@ def lambda_handler(event: dict, context) -> dict:
             detected_name = _detect_mapache_name(user_message)
             if detected_name:
                 session["mapache_name"] = detected_name
+
+        # Enforce daily message limit
+        if check_daily_limit(session):
+            lang = session.get("detected_language", "es")
+            if lang == "en":
+                limit_msg = (
+                    f"You've reached the {DAILY_MESSAGE_LIMIT}-message daily limit for this session. "
+                    "Come back tomorrow to continue your Hero's Journey! 🦝"
+                )
+            else:
+                limit_msg = (
+                    f"Has alcanzado el límite de {DAILY_MESSAGE_LIMIT} mensajes diarios para esta sesión. "
+                    "¡Vuelve mañana para continuar tu Viaje del Héroe! 🦝"
+                )
+            return _response(200, {"session_id": session_id, "response": limit_msg})
 
         # Build prompt with context + knowledge base
         system_prompt, user_content = build_prompt(
