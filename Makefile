@@ -1,4 +1,4 @@
-.PHONY: install synth bootstrap deploy update-frontend-config sync-avatars destroy test-local
+.PHONY: install synth bootstrap deploy update-frontend-config sync-avatars generate-ranking destroy test-local
 
 install:
 	python3 -m venv .venv
@@ -10,7 +10,11 @@ synth:
 bootstrap:
 	source .venv/bin/activate && JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION=1 cdk bootstrap
 
+generate-ranking:
+	python3 scripts/generate_ranking.py
+
 deploy:
+	$(MAKE) generate-ranking
 	source .venv/bin/activate && JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION=1 cdk deploy --require-approval never
 	$(MAKE) update-frontend-config
 	$(MAKE) sync-avatars

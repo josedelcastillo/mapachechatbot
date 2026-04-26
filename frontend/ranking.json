@@ -1,0 +1,384 @@
+{
+  "generated_at": "2026-04-26",
+  "total_unique_badges": 27,
+  "all_time": [
+    {
+      "rank": 1,
+      "name": "Mónica Salazar",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/monica_luli.jpg",
+      "count": 18,
+      "pct": 67
+    },
+    {
+      "rank": 2,
+      "name": "Juana Balvin",
+      "casa": "Moche",
+      "avatar": "mapache-fotos/juana.jpg",
+      "count": 11,
+      "pct": 41
+    },
+    {
+      "rank": 3,
+      "name": "Kailey Nuñez",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/kailey.jpg",
+      "count": 10,
+      "pct": 37
+    },
+    {
+      "rank": 4,
+      "name": "Sandra Lizardo",
+      "casa": "Chavin",
+      "avatar": "mapache-fotos/sandra.jpg",
+      "count": 9,
+      "pct": 33
+    },
+    {
+      "rank": 5,
+      "name": "Fernando Ureta",
+      "casa": "Chavin",
+      "avatar": "mapache-fotos/fernando.jpg",
+      "count": 8,
+      "pct": 30
+    },
+    {
+      "rank": 6,
+      "name": "Julio Príncipe",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/julio_principe.jpg",
+      "count": 8,
+      "pct": 30
+    },
+    {
+      "rank": 7,
+      "name": "Pilar Gárate",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/pilar.jpg",
+      "count": 7,
+      "pct": 26
+    },
+    {
+      "rank": 8,
+      "name": "Camila Gastelumendi",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/camila.jpg",
+      "count": 6,
+      "pct": 22
+    },
+    {
+      "rank": 9,
+      "name": "Luz Chang Navarro",
+      "casa": "Chavin",
+      "avatar": "mapache-fotos/luz.jpg",
+      "count": 6,
+      "pct": 22
+    },
+    {
+      "rank": 10,
+      "name": "Maria Ines Romero",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/maria_ines.jpg",
+      "count": 6,
+      "pct": 22
+    },
+    {
+      "rank": 11,
+      "name": "Gustavo Zambrano",
+      "casa": "Chavin",
+      "avatar": "mapache-fotos/gustavo_z.jpg",
+      "count": 5,
+      "pct": 19
+    },
+    {
+      "rank": 12,
+      "name": "Jose Del Castillo",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/jose_del_castillo.jpg",
+      "count": 5,
+      "pct": 19
+    },
+    {
+      "rank": 13,
+      "name": "Marco Ramos",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/marco.jpg",
+      "count": 4,
+      "pct": 15
+    },
+    {
+      "rank": 14,
+      "name": "Martha Aguero",
+      "casa": "Chavin",
+      "avatar": "mapache-fotos/marta.jpg",
+      "count": 4,
+      "pct": 15
+    },
+    {
+      "rank": 15,
+      "name": "Rodolfo Mondion",
+      "casa": "Chavin",
+      "avatar": "mapache-fotos/rodolfo.jpg",
+      "count": 4,
+      "pct": 15
+    },
+    {
+      "rank": 16,
+      "name": "Rodrigo Benza",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/rodrigo_benza.jpg",
+      "count": 4,
+      "pct": 15
+    },
+    {
+      "rank": 17,
+      "name": "Arturo Arellano",
+      "casa": "Chavin",
+      "avatar": "mapache-fotos/arturo_arellano.png",
+      "count": 3,
+      "pct": 11
+    },
+    {
+      "rank": 18,
+      "name": "Brissy Cáceres",
+      "casa": "Chavin",
+      "avatar": "mapache-fotos/brissy.jpg",
+      "count": 3,
+      "pct": 11
+    },
+    {
+      "rank": 19,
+      "name": "Carla Laredo",
+      "casa": "Moche",
+      "avatar": "mapache-fotos/carla_laredo.png",
+      "count": 3,
+      "pct": 11
+    },
+    {
+      "rank": 20,
+      "name": "Evelyn Quispe",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/evelyn.jpg",
+      "count": 3,
+      "pct": 11
+    },
+    {
+      "rank": 21,
+      "name": "Manuel Rouillon",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/manuel.jpg",
+      "count": 3,
+      "pct": 11
+    },
+    {
+      "rank": 22,
+      "name": "Marcia Rivas",
+      "casa": "Moche",
+      "avatar": "mapache-fotos/marcia.jpg",
+      "count": 3,
+      "pct": 11
+    },
+    {
+      "rank": 23,
+      "name": "Diana Díaz",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/diana.jpg",
+      "count": 3,
+      "pct": 11
+    },
+    {
+      "rank": 24,
+      "name": "Pedro Montoya",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/pedro.jpg",
+      "count": 3,
+      "pct": 11
+    },
+    {
+      "rank": 25,
+      "name": "Alvaro Guerrero",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/alvaro.jpg",
+      "count": 2,
+      "pct": 7
+    },
+    {
+      "rank": 26,
+      "name": "Carlos Jiménez",
+      "casa": "Moche",
+      "avatar": "mapache-fotos/carlos_jimenez.jpg",
+      "count": 2,
+      "pct": 7
+    },
+    {
+      "rank": 27,
+      "name": "Daniel McBride",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/daniel.jpg",
+      "count": 2,
+      "pct": 7
+    },
+    {
+      "rank": 28,
+      "name": "Gracia Dextre",
+      "casa": "Chavin",
+      "avatar": "mapache-fotos/gracia.png",
+      "count": 2,
+      "pct": 7
+    },
+    {
+      "rank": 29,
+      "name": "Jorge Cabeza",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/jorge.jpg",
+      "count": 2,
+      "pct": 7
+    },
+    {
+      "rank": 30,
+      "name": "José Fajardo",
+      "casa": "Moche",
+      "avatar": "mapache-fotos/jose_fajardo.png",
+      "count": 2,
+      "pct": 7
+    },
+    {
+      "rank": 31,
+      "name": "Luciana Franco",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/luciana.jpg",
+      "count": 2,
+      "pct": 7
+    },
+    {
+      "rank": 32,
+      "name": "Morita Rejas",
+      "casa": "Nazca",
+      "avatar": null,
+      "count": 2,
+      "pct": 7
+    },
+    {
+      "rank": 33,
+      "name": "Lucía Guerrero",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/lucia.jpg",
+      "count": 1,
+      "pct": 4
+    },
+    {
+      "rank": 34,
+      "name": "Martín Vegas",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/martin_vega.png",
+      "count": 1,
+      "pct": 4
+    },
+    {
+      "rank": 35,
+      "name": "Nereo Sanchez",
+      "casa": "Wari",
+      "avatar": "mapache-fotos/nereo.jpg",
+      "count": 1,
+      "pct": 4
+    },
+    {
+      "rank": 36,
+      "name": "Gabriela Valencia",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/gabriela.png",
+      "count": 1,
+      "pct": 4
+    },
+    {
+      "rank": 37,
+      "name": "Alejandra Delgadillo",
+      "casa": "Moche",
+      "avatar": null,
+      "count": 1,
+      "pct": 4
+    },
+    {
+      "rank": 38,
+      "name": "Héctor Montellano",
+      "casa": "Moche",
+      "avatar": null,
+      "count": 1,
+      "pct": 4
+    },
+    {
+      "rank": 39,
+      "name": "Julyeth Alcantara",
+      "casa": "Chavin",
+      "avatar": null,
+      "count": 1,
+      "pct": 4
+    },
+    {
+      "rank": 40,
+      "name": "Karenina Alvarez",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/karenina_alvarez.jpg",
+      "count": 1,
+      "pct": 4
+    }
+  ],
+  "last_3_months": [
+    {
+      "rank": 1,
+      "name": "Julio Príncipe",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/julio_principe.jpg",
+      "count": 2,
+      "pct": 7
+    },
+    {
+      "rank": 2,
+      "name": "Morita Rejas",
+      "casa": "Nazca",
+      "avatar": null,
+      "count": 2,
+      "pct": 7
+    },
+    {
+      "rank": 3,
+      "name": "Mónica Salazar",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/monica_luli.jpg",
+      "count": 1,
+      "pct": 4
+    },
+    {
+      "rank": 4,
+      "name": "Alejandra Delgadillo",
+      "casa": "Moche",
+      "avatar": null,
+      "count": 1,
+      "pct": 4
+    },
+    {
+      "rank": 5,
+      "name": "Héctor Montellano",
+      "casa": "Moche",
+      "avatar": null,
+      "count": 1,
+      "pct": 4
+    },
+    {
+      "rank": 6,
+      "name": "Julyeth Alcantara",
+      "casa": "Chavin",
+      "avatar": null,
+      "count": 1,
+      "pct": 4
+    },
+    {
+      "rank": 7,
+      "name": "Karenina Alvarez",
+      "casa": "Nazca",
+      "avatar": "mapache-fotos/karenina_alvarez.jpg",
+      "count": 1,
+      "pct": 4
+    }
+  ]
+}

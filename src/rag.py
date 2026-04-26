@@ -9,6 +9,7 @@ import json
 import logging
 import os
 import re
+from datetime import datetime
 
 import boto3
 
@@ -26,7 +27,8 @@ _CASAS: dict[str, str] = {
     "arturo arellano": "Chavin", "gracia dextre": "Chavin",
     "gustavo zambrano": "Chavin", "sandra lizardo": "Chavin",
     "luz chang navarro": "Chavin", "rodolfo mondion": "Chavin",
-    "jose castañeda": "Chavin", "julyeth alcantara": "Chavin",
+    "jose castañeda": "Chavin", "julyeth alcantara": "Chavin", "fernando ureta": "Chavin",
+    "brissy cáceres": "Chavin", "brissy caceres": "Chavin",
     "jose del castillo": "Wari", "lucía guerrero": "Wari", "lucia guerrero": "Wari",
     "marco ramos": "Wari", "kailey nuñez": "Wari", "kai nuñez": "Wari",
     "rodrigo benza": "Wari", "camila gastelumendi": "Wari",
@@ -146,20 +148,35 @@ def load_badge_progress() -> dict:
     return _badge_progress_cache
 
 
+def _parse_earned_date(earned: str) -> datetime:
+    """Parse earned date string to datetime for sorting. Supports 'YYYY' and 'MM-DD-YY'."""
+    earned = earned.strip()
+    if re.match(r"^\d{4}$", earned):
+        return datetime(int(earned), 1, 1)
+    try:
+        return datetime.strptime(earned, "%m-%d-%y")
+    except ValueError:
+        return datetime.min
+
+
 def _build_badge_index(progress: dict) -> dict[str, list[str]]:
-    """Inverted index: item_name → [list of learner names who approved it].
+    """Inverted index: item_name → [learner names, most recent first, up to 5].
     Badge books are stored as "Badge Book: <title>" — we strip that prefix
     so the index key matches the KB's plain book title.
-    Max 3 names per item to keep prompt compact.
     """
-    index: dict[str, list[str]] = {}
+    raw: dict[str, list[tuple]] = {}
     for name, data in progress.items():
         for item in data.get("approved", []):
             badge_name = item["name"] if isinstance(item, dict) else item
+            earned = item.get("earned", "") if isinstance(item, dict) else ""
             key = badge_name.removeprefix("Badge Book: ").strip()
-            index.setdefault(key, [])
-            if len(index[key]) < 3:
-                index[key].append(name)
+            raw.setdefault(key, [])
+            raw[key].append((_parse_earned_date(earned), name))
+
+    index: dict[str, list[str]] = {}
+    for key, entries in raw.items():
+        entries.sort(key=lambda x: x[0], reverse=True)
+        index[key] = [name for _, name in entries[:5]]
     return index
 
 
@@ -258,48 +275,46 @@ def _build_relevant_kb(
         ordered = niveles
 
     idx = badge_index or {}
-    compact = []
+    lines = []
     for nivel in ordered:
         nivel_name = nivel.get("name", nivel.get("id", ""))
         for rol in nivel.get("roles", []):
             rol_name = rol.get("name", "")
-            badges = []
+            monster  = rol.get("monster", "")
+
+            section_badges = []
             for b in rol.get("badges", []):
-                entry = {
-                    "name": b["name"],
-                    "description": b.get("description", ""),
-                    "_nivel": nivel_name,
-                    "_rol": rol_name,
-                }
                 peers = idx.get(b["name"], [])
-                if peers:
-                    entry["_mapaches_who_completed"] = peers
-                badges.append(entry)
+                peers_line = (
+                    f"  COMPLETADO POR (más recientes primero): {', '.join(peers)}"
+                    if peers else ""
+                )
+                section_badges.append(
+                    f"  BADGE: {b['name']}\n"
+                    f"  DESCRIPCION: {b.get('description', '')}"
+                    + (f"\n{peers_line}" if peers_line else "")
+                )
 
-            books = []
+            section_books = []
             for b in rol.get("books", []):
-                entry = {
-                    "title": b["title"],
-                    "author": b.get("author", ""),
-                    "description": b.get("description", ""),
-                    "_nivel": nivel_name,
-                    "_rol": rol_name,
-                }
                 peers = idx.get(b.get("title", ""), [])
-                if peers:
-                    entry["_mapaches_who_completed"] = peers
-                books.append(entry)
+                peers_line = (
+                    f"  LEIDO POR (más recientes primero): {', '.join(peers)}"
+                    if peers else ""
+                )
+                section_books.append(
+                    f"  LIBRO: {b['title']} — {b.get('author', '')}\n"
+                    f"  DESCRIPCION: {b.get('description', '')}"
+                    + (f"\n{peers_line}" if peers_line else "")
+                )
 
-            if badges or books:
-                compact.append({
-                    "nivel": nivel_name,
-                    "rol": rol_name,
-                    "monster": rol.get("monster"),
-                    "badges": badges,
-                    "books": books,
-                })
+            if section_badges or section_books:
+                lines.append(f"[Nivel: {nivel_name} | Rol: {rol_name} | Monstruo: {monster}]")
+                lines.extend(section_badges)
+                lines.extend(section_books)
+                lines.append("")
 
-    return json.dumps(compact, ensure_ascii=False, indent=2)
+    return "\n".join(lines)
 
 
 def build_prompt(session: dict, user_message: str, role_hint: str | None) -> str:
@@ -365,7 +380,7 @@ def build_prompt(session: dict, user_message: str, role_hint: str | None) -> str
     else:
         closing_rule = "If you don't know their casa yet, invite them to reach out to fellow Mapaches or casa leaders in general."
 
-    system_prompt = f"""You are a warm, empathetic guide for Mapaches (parents) at Tinkuy Marka Academy.
+    system_prompt = f"""You are a casual, warm, empathetic guide for Mapaches (parents) at Tinkuy Marka Academy.
 
 RULES — follow strictly:
 {name_question_rule}1. LANGUAGE: {language_instruction} Never mix languages.
@@ -374,8 +389,8 @@ RULES — follow strictly:
 4. Be specific: tie recommendations directly to what the Mapache described.
 5. Build on previous messages — do not repeat advice already given.
 6. SUBJECT AWARENESS: The Mapache (parent) is the protagonist of their own journey. Badges and books serve the Mapache directly — for their personal growth, professional life, emotions, and relationships. Some badges involve their Puma (child), others are purely for the Mapache themselves. When the Mapache asks about their OWN situation (fears, independence, decisions, emotions), frame recommendations around THEIR experience — not their child's. Only reference the Puma when the Mapache explicitly mentions their child.
-7. PEER MAPACHES: Some badges/books in the knowledge base include a "_mapaches_who_completed" list — these are real Tinkuy Marka parents who have already completed that badge. When recommending such a badge or book, add a brief note (1 sentence) mentioning up to 3 of those names as fellow Mapaches they could ask for their experience. Only mention peers when the field is present. Never invent names.
-8. CLOSING — always end TYPE B and TYPE D responses with 1 sentence inviting the Mapache to connect in person with fellow Mapaches or their casa leaders. {closing_rule}
+7. PEER MAPACHES: Some badges/books in the knowledge base include a "_mapaches_who_completed" list — these are real Tinkuy Marka parents who completed that badge, ordered most-recent first. When recommending such a badge or book, copy ALL the names from that list verbatim in the exact order given, mentioning up to 5. Do NOT filter by casa, role, or any other criterion. Do NOT add, remove, or reorder any names. Do NOT use names from other badges, from the casa context, or from your general knowledge. If the field is absent, do not mention any peers.
+8. FAREWELL ONLY: Add a warm closing sentence mentioning their casa and leaders ONLY when the Mapache explicitly says goodbye or ends the conversation (e.g. "gracias", "hasta luego", "bye", "nos vemos"). Do NOT add any closing or farewell phrase in regular recommendation responses. {closing_rule}
 {role_context}{casa_context}
 ---
 
@@ -386,7 +401,7 @@ RECENT MESSAGES:
 {recent_text or ""}
 
 KNOWLEDGE BASE (use ONLY these badges and books — copy names/titles verbatim):
-Each item includes "_rol", "_nivel", and "description" — use description to explain why it applies to the Mapache's situation.
+Each item shows BADGE/LIBRO name, DESCRIPCION, and — when present — "COMPLETADO POR / LEIDO POR": the exact list of real Mapaches who finished it, most recent first. Copy those names verbatim; do not add, remove, or reorder them.
 {kb_text}
 
 ---

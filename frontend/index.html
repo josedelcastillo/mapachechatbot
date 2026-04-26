@@ -52,11 +52,47 @@
       color: #664d03;
     }
 
+    /* ── Tab navigation ── */
+    #tab-nav {
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      border-bottom: 1.5px solid var(--border);
+      padding: 0 16px;
+    }
+    .tab-btn {
+      padding: 10px 18px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 2.5px solid transparent;
+      margin-bottom: -1.5px;
+      transition: color 0.15s, border-color 0.15s;
+      font-family: inherit;
+    }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .tab-btn:hover:not(.active) { color: var(--text); }
+
+    /* ── Chat section ── */
+    #chat-section {
+      flex: 1;
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
     /* ── Chat window ── */
     #chat {
       flex: 1;
       width: 100%;
-      max-width: 720px;
       overflow-y: auto;
       padding: 8px 16px 4px;
       display: flex;
@@ -127,7 +163,7 @@
     }
 
     /* ── Input ── */
-    #input-area { width: 100%; max-width: 720px; padding: 12px 16px 20px; }
+    #input-area { width: 100%; padding: 12px 16px 20px; }
     #input-area form {
       display: flex; gap: 10px;
       background: var(--surface);
@@ -159,6 +195,145 @@
     button#send:active  { transform: scale(0.94); }
     button#send:disabled { background: var(--border); cursor: not-allowed; }
     button#send svg { width: 18px; height: 18px; }
+
+    /* ── Ranking section ── */
+    #ranking-section {
+      flex: 1;
+      width: 100%;
+      max-width: 720px;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    #ranking-subtabs {
+      display: flex;
+      gap: 8px;
+      padding: 14px 16px 10px;
+      flex-shrink: 0;
+    }
+    .subtab-btn {
+      padding: 6px 16px;
+      border: 1.5px solid var(--border);
+      background: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .subtab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+    .subtab-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+    #ranking-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 4px 16px 24px;
+    }
+
+    .rank-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin-bottom: 7px;
+      background: white;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      animation: fadeUp 0.2s ease;
+    }
+
+    .rank-pos {
+      font-size: 1rem;
+      font-weight: 700;
+      min-width: 28px;
+      text-align: center;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .rank-pos.top3 { font-size: 1.2rem; }
+
+    .rank-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      background: var(--accent-light);
+      flex-shrink: 0;
+    }
+    .rank-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover; border-radius: 50%;
+    }
+
+    .rank-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .rank-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .rank-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 5px;
+    }
+    .rank-bar-track {
+      flex: 1;
+      height: 5px;
+      background: var(--accent-light);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .rank-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--accent);
+      transition: width 0.5s ease;
+    }
+    .rank-count {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      min-width: 22px;
+      text-align: right;
+    }
+
+    .rank-casa {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 12px;
+      color: white;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+
+    .ranking-empty {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .ranking-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: right;
+      padding: 0 4px 10px;
+    }
   </style>
 </head>
 <body>
@@ -172,49 +347,155 @@
   ⚠️ API no configurado. Ejecuta <code>make deploy</code> y luego <code>make update-frontend-config</code>.
 </div>
 
-<div id="chat">
-  <div class="msg bot">
-    <div class="avatar">🦝</div>
-    <div class="bubble">¡Hola! Soy tu guía en el Viaje del Héroe de Tinkuy Marka. 🐾
+<nav id="tab-nav">
+  <button class="tab-btn active" data-tab="chat" onclick="switchTab('chat')">💬 Chat</button>
+  <button class="tab-btn" data-tab="ranking" onclick="switchTab('ranking')">🏅 Ranking</button>
+</nav>
+
+<!-- Chat -->
+<div id="chat-section">
+  <div id="chat">
+    <div class="msg bot">
+      <div class="avatar">🦝</div>
+      <div class="bubble">¡Hola! Soy tu guía en el Viaje del Héroe de Tinkuy Marka. 🐾
 
 Para acompañarte mejor en tu camino, ¿me puedes decir tu nombre?</div>
+    </div>
+  </div>
+
+  <div id="input-area">
+    <form onsubmit="sendMessage(event)">
+      <textarea
+        id="msg-input"
+        rows="1"
+        placeholder="Escribe tu mensaje…"
+        onkeydown="handleKey(event)"
+        oninput="autoResize(this)"
+      ></textarea>
+      <button id="send" type="submit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+             stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </form>
   </div>
 </div>
 
-<div id="input-area">
-  <form onsubmit="sendMessage(event)">
-    <textarea
-      id="msg-input"
-      rows="1"
-      placeholder="Escribe tu mensaje…"
-      onkeydown="handleKey(event)"
-      oninput="autoResize(this)"
-    ></textarea>
-    <button id="send" type="submit">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-           stroke-linecap="round" stroke-linejoin="round">
-        <line x1="22" y1="2" x2="11" y2="13"></line>
-        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-      </svg>
-    </button>
-  </form>
+<!-- Ranking -->
+<div id="ranking-section">
+  <div id="ranking-subtabs">
+    <button class="subtab-btn active" data-subtab="all_time" onclick="switchSubTab('all_time')">Todos los tiempos</button>
+    <button class="subtab-btn" data-subtab="last_3_months" onclick="switchSubTab('last_3_months')">Últimos 3 meses</button>
+  </div>
+  <div id="ranking-list">
+    <div class="ranking-empty">Cargando ranking…</div>
+  </div>
 </div>
 
 <script src="config.js"></script>
 <script>
-  let sessionId = 'session-' + Math.random().toString(36).slice(2, 10);
-  let isLoading = false;
-  let userAvatarUrl = null;   // set when Lambda returns avatar_url
+  let sessionId    = 'session-' + Math.random().toString(36).slice(2, 10);
+  let isLoading    = false;
+  let userAvatarUrl = null;
 
   // Show warning if API not configured
-  if (!API_URL) {
-    document.getElementById('no-config').style.display = 'block';
+  if (!API_URL) document.getElementById('no-config').style.display = 'block';
+
+  /* ───────────────────────────────── TABS ───────────────────────────────── */
+
+  let rankingData   = null;
+  let rankingLoaded = false;
+  let activeSubTab  = 'all_time';
+
+  const CASA_COLORS = {
+    Chavin: '#4a90d9',
+    Wari:   '#27ae60',
+    Moche:  '#e67e22',
+    Nazca:  '#b5623a',
+  };
+
+  function switchTab(name) {
+    const isChat = name === 'chat';
+    document.getElementById('chat-section').style.display    = isChat ? 'flex' : 'none';
+    document.getElementById('ranking-section').style.display = isChat ? 'none' : 'flex';
+    document.querySelectorAll('.tab-btn').forEach(btn =>
+      btn.classList.toggle('active', btn.dataset.tab === name)
+    );
+    if (name === 'ranking' && !rankingLoaded) loadRanking();
   }
+
+  async function loadRanking() {
+    rankingLoaded = true;
+    try {
+      const res = await fetch('ranking.json');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      rankingData = await res.json();
+      renderRankingTab(activeSubTab);
+    } catch (e) {
+      document.getElementById('ranking-list').innerHTML =
+        '<div class="ranking-empty">No se pudieron cargar los datos.</div>';
+    }
+  }
+
+  function switchSubTab(key) {
+    activeSubTab = key;
+    document.querySelectorAll('.subtab-btn').forEach(btn =>
+      btn.classList.toggle('active', btn.dataset.subtab === key)
+    );
+    if (rankingData) renderRankingTab(key);
+  }
+
+  function renderRankingTab(key) {
+    const list = document.getElementById('ranking-list');
+    const rows = rankingData?.[key] ?? [];
+
+    if (rows.length === 0) {
+      list.innerHTML = '<div class="ranking-empty">Sin badges en este período.</div>';
+      return;
+    }
+
+    const meta = key === 'all_time'
+      ? `${rows.length} mapaches · ${rankingData.total_unique_badges} badges posibles`
+      : `${rows.length} mapaches activos en los últimos 3 meses`;
+
+    const rowsHtml = rows.map(r => {
+      const medal    = r.rank === 1 ? '🥇' : r.rank === 2 ? '🥈' : r.rank === 3 ? '🥉' : r.rank;
+      const isTop3   = r.rank <= 3;
+      const avatarHtml = r.avatar
+        ? `<img src="${r.avatar.replace(/"/g,'%22')}" alt="${escHtml(r.name)}" onerror="this.outerHTML='🦝'">`
+        : '🦝';
+      const casaColor = CASA_COLORS[r.casa] || '#8a6e56';
+      const casaHtml  = r.casa
+        ? `<div class="rank-casa" style="background:${casaColor}">${escHtml(r.casa)}</div>`
+        : '';
+      return `
+        <div class="rank-row">
+          <div class="rank-pos${isTop3 ? ' top3' : ''}">${medal}</div>
+          <div class="rank-avatar">${avatarHtml}</div>
+          <div class="rank-info">
+            <div class="rank-name">${escHtml(r.name)}</div>
+            <div class="rank-bar-row">
+              <div class="rank-bar-track">
+                <div class="rank-bar-fill" style="width:${r.pct}%"></div>
+              </div>
+              <div class="rank-count">${r.count}</div>
+            </div>
+          </div>
+          ${casaHtml}
+        </div>`;
+    }).join('');
+
+    list.innerHTML = `<div class="ranking-meta">${escHtml(meta)}</div>${rowsHtml}`;
+  }
+
+  /* ───────────────────────────────── CHAT ───────────────────────────────── */
 
   async function sendMessage(e) {
     e.preventDefault();
     const input = document.getElementById('msg-input');
-    const text = input.value.trim();
+    const text  = input.value.trim();
     if (!text || isLoading) return;
 
     if (!API_URL) {
@@ -260,15 +541,14 @@ Para acompañarte mejor en tu camino, ¿me puedes decir tu nombre?</div>
   }
 
   function _refreshInitialUserAvatars() {
-    // Update any user avatars rendered before the photo was known
     document.querySelectorAll('.msg.user .avatar').forEach(el => {
       if (el.textContent === '👤') el.innerHTML = _avatarHtml('user');
     });
   }
 
   function appendMessage(role, text) {
-    const chat = document.getElementById('chat');
-    const div = document.createElement('div');
+    const chat    = document.getElementById('chat');
+    const div     = document.createElement('div');
     div.className = `msg ${role}`;
     const content = role === 'bot' ? renderMarkdown(text) : escHtml(text);
     div.innerHTML = `
@@ -280,7 +560,7 @@ Para acompañarte mejor en tu camino, ¿me puedes decir tu nombre?</div>
 
   function showTyping() {
     const chat = document.getElementById('chat');
-    const div = document.createElement('div');
+    const div  = document.createElement('div');
     div.id = 'typing'; div.className = 'msg bot';
     div.innerHTML = `<div class="avatar" style="background:var(--accent-light)">🦝</div>
       <div class="bubble typing-dots"><span></span><span></span><span></span></div>`;
@@ -288,8 +568,8 @@ Para acompañarte mejor en tu camino, ¿me puedes decir tu nombre?</div>
     chat.scrollTop = chat.scrollHeight;
   }
 
-  function removeTyping() { document.getElementById('typing')?.remove(); }
-  function setLoading(v) {
+  function removeTyping()  { document.getElementById('typing')?.remove(); }
+  function setLoading(v)   {
     isLoading = v;
     document.getElementById('send').disabled = v;
   }
@@ -308,27 +588,18 @@ Para acompañarte mejor en tu camino, ¿me puedes decir tu nombre?</div>
   }
 
   function renderMarkdown(raw) {
-    const esc = escHtml(raw);
+    const esc   = escHtml(raw);
     const lines = esc.split('\n');
-    const out = [];
-    let inList = false;
+    const out   = [];
+    let inList  = false;
 
-    for (let i = 0; i < lines.length; i++) {
-      let line = lines[i];
-
-      // List item: starts with "- "
+    for (let line of lines) {
       if (/^- /.test(line)) {
         if (!inList) { out.push('<ul>'); inList = true; }
-        line = line.replace(/^- /, '');
-        line = applyInline(line);
-        out.push(`<li>${line}</li>`);
+        out.push(`<li>${applyInline(line.replace(/^- /, ''))}</li>`);
       } else {
         if (inList) { out.push('</ul>'); inList = false; }
-        if (line.trim() === '') {
-          // blank line — skip, paragraph breaks handled by closing previous p
-        } else {
-          out.push(`<p>${applyInline(line)}</p>`);
-        }
+        if (line.trim()) out.push(`<p>${applyInline(line)}</p>`);
       }
     }
     if (inList) out.push('</ul>');
@@ -336,9 +607,7 @@ Para acompañarte mejor en tu camino, ¿me puedes decir tu nombre?</div>
   }
 
   function applyInline(s) {
-    // Bold: **text**
     s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    // Italic parens for role/level hints: *(text)*
     s = s.replace(/\*\((.+?)\)\*/g, '<em>($1)</em>');
     return s;
   }
